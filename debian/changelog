@@ -1,0 +1,56 @@
+mednafenfe (0.1.7-0ubuntu1) jaunty; urgency=low
+
+  * Fix volume control slider
+  * Apply patch from https://sourceforge.net/tracker/?func=detail&aid=3027601&group_id=229596&atid=1077559
+
+ -- Jordan Callicoat <MonkeeSage@gmail.com>  Thu, 12 Nov 2009 03:34:51 -0600
+
+mednafenfe (0.1.6-0ubuntu1) jaunty; urgency=low
+
+  * Disable spinners for width/height unless fullscreen option is checked.
+
+ -- Jordan Callicoat <MonkeeSage@gmail.com>  Thu, 12 Nov 2009 03:34:51 -0600
+
+mednafenfe (0.1.5-0ubuntu1) jaunty; urgency=low
+
+  * Fix problem with ConfObject "default" key
+  * Set lowest audio sampling rate to be 8192 (which is the lowest mednafen will accept).
+  * Convert glade file to UI Builder format (along with required source changes).
+  * Make width/height spinners accept real numbers (i.e., floats) to allow for fractional adjustments.
+  * Make sure that "gtk-button-images" setting is True, so our buttons always have images.
+  
+ -- Jordan Callicoat <MonkeeSage@gmail.com>  Thu, 12 Nov 2009 03:34:51 -0600
+
+mednafenfe (0.1.4-0ubuntu1) jaunty; urgency=low
+
+  * Fix problem with xscale widget in glade file
+  * Install to the proper python directories
+  
+ -- Jordan Callicoat <MonkeeSage@gmail.com>  Thu, 26 Mar 2009 12:23:15 -0500
+
+mednafenfe (0.1.3-0ubuntu1) hardy; urgency=low
+
+  * Fix bug where config dir already exists
+  * Fix bug where config exception called without explicit scope
+  
+ -- Jordan Callicoat <MonkeeSage@gmail.com>  Sat, 07 Jun 2008 04:04:49 -0500
+
+mednafenfe (0.1.2-0ubuntu1) hardy; urgency=low
+
+  * Fix config file location bug
+  
+ -- Jordan Callicoat <MonkeeSage@gmail.com>  Wed, 05 Jun 2008 06:45:01 -0500
+
+mednafenfe (0.1.1-0ubuntu1) hardy; urgency=low
+
+  * Fix spacing issues with glade widgets (minor)
+  * Trap signals (SIGTERM, SIGINT) and exit cleanly
+  * Fix code to de-/sensitize "Force Mono" checkbutton on init
+  
+ -- Jordan Callicoat <MonkeeSage@gmail.com>  Sun, 01 Jun 2008 08:29:08 -0500
+
+mednafenfe (0.1.0-0ubuntu1) hardy; urgency=low
+
+  * Initial Release
+  
+ -- Jordan Callicoat <MonkeeSage@gmail.com>  Mon, 12 May 2008 14:10:29 -0500

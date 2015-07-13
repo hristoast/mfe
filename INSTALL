@@ -1,0 +1,12 @@
+mfe doesn't need to be installed. You can just unpack it and run it by calling __init__.py (or calling mfe/mfe.py directly). On windows you can "call" them by double-clicking them in explorer (assuming you have .py files set to open with python[w].exe). 
+
+However, you can install mfe into the python site-packages dir if you'd like. To do so, run:
+
+python setup.py install
+
+On POSIX-like systems (linux, OS X...), a python script will be placed in $prefix/bin/mfe
+
+. . . INCOMPLETE . . .
+
+That's it.
+

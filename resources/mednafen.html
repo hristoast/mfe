@@ -1,0 +1,1919 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ 
+  <title>Mednafen General Documentation</title>
+  <style text="text/css"><!--
+	body
+	{
+	 background-color: #e0ffe0;
+	 color: #000000;
+	}
+	th
+	{
+	 color: #e0ffe0;
+	 background-color: #003020;
+	}
+	td
+	{
+	 color: #000000;
+	 background-color: #efefef;
+	}
+	 --></style>
+ </head><body color="#000000" bgcolor="#e0ffe0">
+  <center><h1>Mednafen</h1></center>
+  <center><h1>General Documentation</h1></center>
+  <center><i>Last updated January 5, 2008<br>Valid as of Mednafen 0.8.7</i></center>
+ <p>
+ <b>Table of Contents:</b>
+ </p><ul>
+  <li><a title="http://mednafen.sourceforge.net/documentation/#intro" href="#intro">Introduction</a>
+  </li><li><a title="http://mednafen.sourceforge.net/documentation/#features" href="#features">Core Features</a>
+  <ul>
+   <li><a title="http://mednafen.sourceforge.net/documentation/#features-nes" href="#features-nes">NES</a>
+   <ul>
+    <li><a title="http://mednafen.sourceforge.net/documentation/#features-cpu" href="#features-cpu">CPU</a>
+    </li><li><a title="http://mednafen.sourceforge.net/documentation/#features-ppu" href="#features-ppu">PPU</a>
+    <ul>
+     <li><a title="http://mednafen.sourceforge.net/documentation/#features-ppu-palettes" href="#features-ppu-palettes">Palettes</a>
+    </li></ul>
+    </li><li><a title="http://mednafen.sourceforge.net/documentation/#features-sound" href="#features-sound">Sound</a>
+    </li><li><a title="http://mednafen.sourceforge.net/documentation/#features-input" href="#features-input">Input</a>
+    <ul>
+     <li><a title="http://mednafen.sourceforge.net/documentation/#features-input-zapper" href="#features-input-zapper">Zapper</a>
+    </li></ul>
+    </li><li><a title="http://mednafen.sourceforge.net/documentation/#features-expansion" href="#features-expansion">File Formats/Expansion Hardware</a>
+    <ul>
+     <li><a title="http://mednafen.sourceforge.net/documentation/#features-expansion-ines" href="#features-expansion-ines">iNES Format</a>
+     </li><li><a title="http://mednafen.sourceforge.net/documentation/#features-expansion-unif" href="#features-expansion-unif">UNIF</a>
+     </li><li><a title="http://mednafen.sourceforge.net/documentation/#features-expansion-fds" href="#features-expansion-fds">Famicom Disk System</a>
+     </li><li><a title="http://mednafen.sourceforge.net/documentation/#features-expansion-genie" href="#features-expansion-genie">Game Genie</a>
+     </li><li><a title="http://mednafen.sourceforge.net/documentation/#features-expansion-vs" href="#features-expansion-vs">VS Unisystem</a>
+    </li></ul>
+    </li>
+   </ul>
+   </li>
+   <li><a title="http://mednafen.sourceforge.net/documentation/#features-lynx" href="#features-lynx">Atari Lynx</a></li>
+   <li><a title="http://mednafen.sourceforge.net/documentation/#features-gba" href="#features-gba">GameBoy Advance</a></li>
+   <li><a title="http://mednafen.sourceforge.net/documentation/#features-pce" href="#features-pce">PC Engine/SuperGrafx</a></li>
+   <li><a title="http://mednafen.sourceforge.net/documentation/#features-pcfx" href="#features-pcfx">PC-FX</a></li>
+   <li><a title="http://mednafen.sourceforge.net/documentation/#features-ips" href="#features-ips">Automatic IPS Patching</a></li>
+   <li><a title="http://mednafen.sourceforge.net/documentation/#features-cdrom" href="#features-cdrom">CD-ROM Emulation</a></li>
+  </ul>
+  </li><li><a title="http://mednafen.sourceforge.net/documentation/#using" href="#using">Using Mednafen</a></li>
+  <ul>
+   <li><a title="http://mednafen.sourceforge.net/documentation/#using-keys" href="#using-keys">Key Assignments</a></li>
+    <ul>
+     <li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-nes" href="#using-keys-nes">NES</a></li>
+     <ul>
+      <li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-vs" href="#using-keys-vs">VS Unisystem</a>
+      </li><li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-fds" href="#using-keys-fds">Famicom Disk System</a>
+      </li><li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-barcode" href="#using-keys-barcode">Barcode Readers</a>
+      </li><li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-nesgamepad" href="#using-keys-nesgamepad">Game Pad</a>
+      </li><li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-powerpad" href="#using-keys-powerpad">Power Pad</a>
+      </li><li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-fkb" href="#using-keys-fkb">Family Keyboard</a>
+      </li><li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-hypershot" href="#using-keys-hypershot">HyperShot Controller</a>
+      </li><li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-mahjong" href="#using-keys-mahjong">Mahjong Controller</a>
+      </li><li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-quiz" href="#using-keys-quiz">Quiz King Controller</a>
+     </li></ul>
+     <li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-atarilynx" href="#using-keys-atarilynx">Atari Lynx</a></li>
+     <li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-gameboy" href="#using-keys-gameboy">GameBoy/GameBoy Color/GameBoy Advance</a></li>
+     <li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-ngp" href="#using-keys-ngp">Neo Geo Pocket/Neo Geo Pocket Color</a></li>
+     <li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-pce" href="#using-keys-pce">PC Engine(Turbo Grafx 16)/SuperGrafx</a></li>
+     <li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-pcfx" href="#using-keys-pcfx">PC-FX</a></li>
+     <li><a title="http://mednafen.sourceforge.net/documentation/#using-keys-wonderswan" href="#using-keys-wonderswan">WonderSwan</a></li>
+    </ul>
+   <li><a title="http://mednafen.sourceforge.net/documentation/#using-cli" href="#using-cli">Command line</a>
+  </li></ul>
+  <li><a title="http://mednafen.sourceforge.net/documentation/cheat.html" href="http://mednafen.sourceforge.net/documentation/cheat.html">Cheat Guide</a></li>
+  <li><a title="http://mednafen.sourceforge.net/documentation/debugger.html" href="http://mednafen.sourceforge.net/documentation/debugger.html">Debugger</a></li>
+  <li><a title="http://mednafen.sourceforge.net/documentation/netplay.html" href="http://mednafen.sourceforge.net/documentation/netplay.html">Network Play</a></li>
+  <li><a title="http://mednafen.sourceforge.net/documentation/#hacks" href="#hacks">Game-specific Emulation Hacks</a></li>
+  <li><a title="http://mednafen.sourceforge.net/documentation/#credits" href="#credits">Credits</a></li>
+  <li><a title="http://mednafen.sourceforge.net/documentation/#legal" href="#legal">Legal Stuff</a></li>
+ </ul>
+ <p></p>
+ <hr width="100%">
+ <a name="intro"><h2>Introduction</h2></a>
+ <p>
+        Mednafen is a multi-game-system emulator, for various platforms, including emulation of the following systems:
+</p><ul>
+ <li>Atari Lynx
+ </li><li>Famicom
+ </li><li>GameBoy (Color)
+ </li><li>GameBoy Advance
+ </li><li>Neo Geo Pocket (Color)
+ </li><li>NES, both NTSC and PAL
+ </li><li>PC Engine/TurboGrafx 16 (CD) and SuperGrafx
+ </li><li>PC-FX
+ </li><li>WonderSwan (Color)
+</li></ul>
+ <p></p>
+ <p>
+ This document has been arranged to keep user interface details and emulation
+ details as separate as possible, though this has not been accomplished entirely.
+ </p>
+ <p>
+ In several places references are made to the "base directory".  If you
+ are running a port on a UN*X-like system(Linux/*BSD/Mac OSX/SunOS/etc.), the
+ base directory is "~/.mednafen", or in other words, 
+ "your home directory plus .mednafen".  For all other ports(including DOS and
+MS Windows), the base directory is the directory that the executable is in.
+ </p>
+ <p>
+Mednafen includes parts of or links with the following software
+packages and programs, so give the developers lots of thanks sometime(<b>NOTE</b> they do not provide user support for Mednafen,
+so don't ask them questions about Mednafen)!
+ </p><ul>
+  <li><a title="http://www.slack.net/~ant/libs/" href="http://www.slack.net/%7Eant/libs/">Blip_Buffer</a> - Used in Atari Lynx, GB/GBC/GBA, and PC Engine sound emulation code.</li>
+  <li><a title="http://http//cygne.emuunlim.com/" href="http://http//cygne.emuunlim.com/">Cygne</a> - WonderSwan (Color) emulation.</li>
+  <li><a title="http://fceultra.sourceforge.net/" href="http://fceultra.sourceforge.net/">FCE Ultra</a> - NES/Famicom emulation.</li>
+  <li><a title="http://fuse-emulator.sourceforge.net/" href="http://fuse-emulator.sourceforge.net/">Fuse</a> - Z80 emulation code.
+  </li><li><a title="http://homepage.ntlworld.com/dystopia/" href="http://homepage.ntlworld.com/dystopia/">Handy</a> - Atari Lynx emulation.</li>
+  <li><a title="http://www.hiend3d.com/hq2x.html" href="http://www.hiend3d.com/hq2x.html">hq2x/hq3x/hq4x</a> - Pretty real-time(kind of ;)) image magnification filter.</li>
+  <li><a title="http://www.gnu.org/software/libcdio/" href="http://www.gnu.org/software/libcdio/">libcdio</a> - CD access routines used in PCE CD emulation.</li>
+  <li><a title="http://www.mega-nerd.com/libsndfile/" href="http://www.mega-nerd.com/libsndfile/">libsndfile</a> - Used for WAVE file playback with PCE CD emulation and WAVE file recording.</li>
+  <li><a title="http://www.oberhumer.com/opensource/lzo/" href="http://www.oberhumer.com/opensource/lzo/">miniLZO</a> - Real-time (de)compression of save-states used in game rewinding.</li>
+  <li><a title="http://www.slack.net/~ant/libs/ntsc.html#nes_ntsc" href="http://www.slack.net/%7Eant/libs/ntsc.html#nes_ntsc">nes_ntsc</a> - NES NTSC effects/artifacts blitter.</li>
+  <li><a title="http://neopop.emuxhaven.net/" href="http://neopop.emuxhaven.net/">NeoPop</a> - Neo Geo Pocket emulation code.
+  </li><li><a title="http://scale2x.sf.net/" href="http://scale2x.sf.net/">Scale2x</a> - Pretty non-blurring real-time image magnification filter.</li>
+  <li><a title="http://www.libsdl.org/" href="http://www.libsdl.org/">SDL</a> - System interfaces for video blitting, sound output, input, etc.</li>
+  <li><a title="http://www.libsdl.org/projects/SDL_net/" href="http://www.libsdl.org/projects/SDL_net/">SDL_net</a> - Used in network play code.</li>
+  <li><a title="http://xiph.org/" href="http://xiph.org/">Tremor</a> Used for Ogg Vorbis playback with PCE CD emulation.</li>
+  <li><a title="http://daniel.haxx.se/projects/trio/" href="http://daniel.haxx.se/projects/trio/">Trio</a> - *printf replacement functions for portability.</li>
+  <li><a title="http://vba.sf.net/" href="http://vba.sf.net/">VisualBoy Advance</a> - GameBoy, GameBoy Color, and GameBoy Advance emulation.</li>
+  <li><a title="http://www.zlib.org/" href="http://www.zlib.org/">zlib</a> - General (de)compressor used with network play and PNG snapshot saving.</li>
+ </ul>
+ <p></p>
+ <hr width="100%">
+ <a name="features"><h2>Core Features</h2></a>
+ <ul>
+  <li>Double-buffered video, enabled by default.
+  </li><li>Multi-threaded video blitting, allowing for a kind of software triple-buffering, and improving performance on SMP systems.
+  </li><li>Joystick support.
+  </li><li>Extremely versatile input configuration system; assign multiple physical buttons to a virtual button or action.
+  </li><li>Full-screen modes.
+  </li><li>Save states.
+  </li><li>Real-time game rewinding, up to 10 seconds.
+  </li><li>Screen snapshots, saved in PNG format.
+  </li><li>Loading games from gzip and (pk)zip compressed archives.
+  </li><li><a name="features-nes"><h3>NES</h3></a>
+   <ul>
+    <li><a name="features-cpu"></a><h3><a name="features-cpu">CPU</a></h3>
+<a name="features-cpu">     </a><ul>
+<a name="features-cpu">      </a><li><a name="features-cpu">All 256, official and unofficial, 2A03 opcodes emulated.
+     </a></li></ul>
+<a name="features-cpu">    </a></li><li><a name="features-ppu"><h3>PPU</h3></a>
+    <ul>
+     <li>8x8 and 8x16 sprites.
+     </li><li>Sprite hit emulation(including checking the bg color).
+     </li><li>8 sprite limit(and flag emulation).
+     </li><li>Screen/Sprite disabling, with correct color replacement.
+     </li><li>Color deemphasis(probably not 100% correct, more research is needed).
+     </li><li>Strip colorburst bit emulated.
+     </li><li>CPU-instruction granularity for special mid-scanline effects(mostly CHR switching, such as
+      used in "Pirates!", "Marble Madness", and "Mother").
+     </li><li><a name="features-ppu-palettes"><h4>Palettes</h4></a>
+ <p>
+ Mednafen has many palette features, including loading a custom palette
+ to replace the default NES palette.  The palette from an NTSC NES can
+ also be generated on-the-fly.
+ </p>
+ <p>
+ First, a note on on the format of external palettes; Palette files are expected to contain 64 8-bit RGB triplets(each in
+ that order; red comes first in the triplet in the file, then green,
+ then blue).  Each 8-bit value represents brightness for that particular
+ color.  0 is minimum, 255 is maximum.
+ </p>
+ <p>
+        Palettes can be set on a per-game basis.  To do this, put a palette
+        file in the "gameinfo" directory with the same base filename
+	as the game you wish to associate with and add the extension "pal".
+        Examples:
+	</p><pre>        
+                File name:              Palette file name:
+                 BigBad.nes              BigBad.pal
+                 BigBad.zip              BigBad.pal
+                 BigBad.Better.nes       BigBad.Better.pal
+	</pre>
+ <p></p>
+ <p>
+       With so many ways to choose a palette, figuring out which one will
+        be active may be difficult.  Here's a list of what palettes will
+        be used, in order from highest priority to least priority(if a 
+        condition doesn't exist for a higher priority palette, the emulator 
+        will continue down its list of palettes).
+	</p><ul>
+        <li>NSF Palette(for NSFs only)
+        </li><li>Palette loaded from the "gameinfo" directory.
+        </li><li>NTSC Color Emulation(only for NTSC NES games).
+        </li><li>VS Unisystem palette(if the game is a VS Unisystem game and a palette is available).
+        </li><li>Custom global palette.
+        </li><li>Default NES palette. 
+	</li></ul>
+ <p></p>
+ </li>
+ </ul>
+ </li><li><a name="features-sound"><h3>Sound</h3></a>
+ <p>
+ All 5 internal sound channels are supported(2x rectangle, triangle, noise,
+ and DMC/PCM).  Sound channels are emulated with CPU instruction granularity.
+ </p><p>
+ Sound data is generated at the NES' CPU clock rate(about 1.8MHz for the NTSC NES), 
+ and then resampled to the output sample rate.  
+ </p>
+ <p>
+ Besides the 5 internal NES sound channels, Mednafen emulates the extra
+ sound capabilities of the Konami VRCVI, Konami VRCVII, Namco 106, Nintendo MMC5, and the Sunsoft FME-07 chips.  The extra sound
+ channel in the Famicom Disk System is also emulated, but the support for
+ its FM capabilities is limited.
+ </p>
+ </li><li><h3><a name="features-input">Input</a></h3>
+ <p>
+  Mednafen emulates the standard NES gamepad, the Four-Score multiplayer
+  adapter, the Zapper, the Power Pad,  and the Arkanoid controller.  The 
+  Famicom version of the Arkanoid controller, the "Space Shadow" gun, the 
+  Famicom 4-player adapter, the Family Keyboard, the HyperShot controller, the Mahjong controller,
+  the Oeka Kids tablet, the Quiz King buzzers, the Family Trainer, and the Barcode World barcode
+  reader are also emulated.
+ </p>
+ <a name="features-input-zapper"><h4>Zapper</h4></a>
+ <p>
+        Most Zapper NES games expect the Zapper to be plugged into port 2.
+        and most VS Unisystem games expect the Zapper to be plugged
+        into port 1.
+ </p><p>
+        The left mouse button is the emulated trigger button for the
+        Zapper.  The right mouse button is also emulated as the trigger,
+        but as long as you have the right mouse button held down, no color
+        detection will take place, which is effectively like pulling the
+        trigger while the Zapper is pointed away from the television screen.
+        Note that you must hold the right button down for a short
+        time to have the desired effect.
+ </p>
+ <hr width="90%">
+ </li><li><a name="features-expansion"><h3>File Formats/Expansion Hardware</h3></a>
+ <p>
+ Mednafen supports the iNES, FDS(raw and with a header), UNIF, and NSF file
+ formats.  FDS ROM images in the iNES format are not supported; it would
+ be silly to do so and storing them in that format is nonsensical.
+ </p>
+ <p>
+ Mednafen supports loading ROM/disk images from some types of compressed files.
+ Mednafen can load data from both PKZIP-format files and
+ gzip-format files.  Only the "deflate" algorithm is supported, but
+ this is the most widely used algorithm for these formats.
+ </p>
+ <p>
+ All files in a PKZIP format archive will be scanned for the
+        followings extensions:  .nes, .fds, .nsf, .unf, .nez, .unif  
+        The first archived file to have one of these extensions will be
+        loaded. If no archived file has one of these extensions, the
+        first archived file will be loaded.
+ </p>
+ <a name="features-expansion-ines"><h4>iNES Format</h4></a>
+ <p>
+ The battery-backed RAM, vertical/horizontal mirroring, four-screen
+ name table layout, and 8-bit mapper number capabilities of the iNES
+ format are supported.  The 512-byte trainer capability is also supported,
+ but it is deprecated.  Common header corruption conditions are cleaned(let's
+ go on a DiskDude hunt), though not all conditions can be automatically
+ detected and fixed.  In addition, a few common header inaccuracies for
+ games are also corrected(detected by CRC32 value).  Note that these
+ fixes are not written back to the storage medium.
+ </p>
+ <p>
+ Support for the recent VS System bit and "number of 8kB RAM banks" 
+ is not implemented.  Too many iNES headers are corrupt where this new data
+ is stored, causing problems for those games.
+ </p>
+ <p>
+ The following table lists iNES-format "mappers" supported well in Mednafen.
+ </p><p>
+ <table width="100%" border="1">
+ <tbody><tr><th>Number:</th><th>Description:</th><th>Game Examples:</th></tr>
+ <tr><td>0</td><td>No bankswitching</td><td>Donkey Kong, Mario Bros</td></tr>
+ <tr><td>1</td><td>Nintendo MMC1</td><td>MegaMan 2, Final Fantasy</td></tr>
+ <tr><td>2</td><td>UNROM</td><td>MegaMan, Archon, 1944</td></tr>
+ <tr><td>3</td><td>CNROM</td><td>Spy Hunter, Gradius</td></tr>
+ <tr><td>4</td><td>Nintendo MMC3</td><td>Super Mario Bros. 3, Recca, Final Fantasy 3</td></tr>
+ <tr><td>5</td><td>Nintendo MMC5</td><td>Castlevania 3, Just Breed, Bandit Kings of Ancient China</td></tr>
+ <tr><td>6</td><td>FFE F4 Series(hacked, bootleg)</td><td></td></tr>
+ <tr><td>7</td><td>AOROM</td><td>Battle Toads, Time Lord</td></tr>
+ <tr><td>8</td><td>FFE F3 Series(hacked, bootleg)</td><td></td></tr>
+ <tr><td>9</td><td>Nintendo MMC2</td><td>Punchout!</td></tr>
+ <tr><td>10</td><td>Nintendo MMC4</td><td>Fire Emblem, Fire Emblem Gaiden</td></tr>
+ <tr><td>11</td><td>Color Dreams</td><td>Crystal Mines, Bible Adventures</td></tr>
+ <tr><td>12</td><td>??</td><td>Dragon Ball Z 5 ("bootleg" original)</td></tr>
+ <tr><td>13</td><td>CPROM</td><td>Videomation</td></tr>
+ <tr><td>15</td><td>Multi-cart(bootleg)</td><td>100-in-1: Contra Function 16</td></tr>
+ <tr><td>16</td><td>Bandai ??</td><td>Dragon Ball Z, SD Gundam Gaiden **EEPROM is not emulated</td></tr>
+ <tr><td>17</td><td>FFE F8 Series(hacked, bootleg)</td><td></td></tr>
+ <tr><td>18</td><td>Jaleco SS806</td><td>Pizza Pop, Plasma Ball</td></tr>
+ <tr><td>19</td><td>Namco 106</td><td>Splatter House, Mappy Kids</td></tr>
+ <tr><td>21</td><td>Konami VRC4 2A</td><td>WaiWai World 2, Ganbare Goemon Gaiden 2</td></tr>
+ <tr><td>22</td><td>Konami VRC4 1B</td><td>Twinbee 3</td></tr>
+ <tr><td>23</td><td>Konami VRC2B</td><td>WaiWai World, Crisis Force</td></tr>
+ <tr><td>24</td><td>Konami VRC6</td><td>Akumajou Densetsu</td></tr>
+ <tr><td>25</td><td>Konami VRC4</td><td>Gradius 2, Bio Miracle:Boku tte Upa</td></tr>
+ <tr><td>26</td><td>Konami VRC6 A0-A1 Swap</td><td>Esper Dream 2, Madara</td></tr>
+ <tr><td>32</td><td>IREM G-101</td><td>Image Fight 2, Perman</td></tr>
+ <tr><td>33</td><td>Taito TC0190/TC0350</td><td>Don Doko Don</td></tr>
+ <tr><td>34</td><td>NINA-001 and BNROM</td><td>Impossible Mission 2, Deadly Towers, Bug Honey</td></tr>
+ <tr><td>41</td><td>Caltron 6-in-1</td><td>Caltron 6-in-1</td></tr>
+ <tr><td>42</td><td>(bootleg)</td><td>Mario Baby</td></tr>
+ <tr><td>44</td><td>Multi-cart(bootleg)</td><td>Super HiK 7 in 1</td></tr>
+ <tr><td>45</td><td>Multi-cart(bootleg)</td><td>Super 1000000 in 1</td></tr>
+ <tr><td>46</td><td>Game Station</td><td>Rumble Station</td></tr>
+ <tr><td>47</td><td>NES-QJ</td><td>Nintendo World Cup/Super Spike V-Ball</td></tr>
+ <tr><td>48</td><td>Taito TC190V</td><td>Flintstones</td></tr>
+ <tr><td>49</td><td>Multi-cart(bootleg)</td><td>Super HiK 4 in 1</td></tr>
+ <tr><td>51</td><td>Multi-cart(bootleg)</td><td>11 in 1 Ball Games</td></tr>
+ <tr><td>52</td><td>Multi-cart(bootleg)</td><td>Mario Party 7 in 1</td></tr>
+ <tr><td>64</td><td>Tengen RAMBO 1</td><td>Klax, Rolling Thunder, Skull and Crossbones</td></tr>
+ <tr><td>65</td><td>IREM H-3001</td><td>Daiku no Gensan 2</td></tr>
+ <tr><td>66</td><td>GNROM</td><td>SMB/Duck Hunt</td></tr>
+ <tr><td>67</td><td>Sunsoft ??</td><td>Fantasy Zone 2</td></tr>
+ <tr><td>68</td><td>Sunsoft ??</td><td>After Burner 2, Nantetta Baseball</td></tr>
+ <tr><td>69</td><td>Sunsoft FME-7</td><td>Batman: Return of the Joker, Hebereke</td>
+ </tr><tr><td>70</td><td>??</td><td>Kamen Rider Club</td></tr>
+ <tr><td>71</td><td>Camerica</td><td>Fire Hawk, Linus Spacehead</td></tr>
+ <tr><td>72</td><td>Jaleco ??</td><td>Pinball Quest</td></tr>
+ <tr><td>73</td><td>Konami VRC3</td><td>Salamander</td></tr>
+ <tr><td>74</td><td>Taiwanese MMC3 CHR ROM w/ VRAM</td><td>Super Robot Wars 2</td></tr>
+ <tr><td>75</td><td>Jaleco SS8805/Konami VRC1</td><td>Tetsuwan Atom, King Kong 2</td></tr>
+ <tr><td>76</td><td>Namco 109</td><td>Megami Tensei</td></tr>
+ <tr><td>77</td><td>IREM ??</td><td>Napoleon Senki</td></tr>
+ <tr><td>78</td><td>Irem 74HC161/32</td><td>Holy Diver</td></tr>
+ <tr><td>79</td><td>NINA-06/NINA-03</td><td>F15 City War, Krazy Kreatures, Tiles of Fate</td></tr>
+ <tr><td>80</td><td>Taito X-005</td><td>Minelvation Saga</td></tr>
+ <tr><td>82</td><td>Taito ??</td><td>Kyuukyoku Harikiri Stadium - Heisei Gannen Ban</td></tr><tr>
+ </tr><tr><td>85</td><td>Konami VRC7</td><td>Lagrange Point</td></tr>
+ <tr><td>86</td><td>Jaleco JF-13</td><td>More Pro Baseball</td></tr>
+ <tr><td>87</td><td>??</td><td>Argus</td></tr>
+ <tr><td>88</td><td>Namco 118</td><td>Dragon Spirit</td></tr>
+ <tr><td>89</td><td>Sunsoft ??</td><td>Mito Koumon</td></tr>
+ <tr><td>90</td><td>??</td><td>Super Mario World, Mortal Kombat 3, Tekken 2</td></tr>
+ <tr><td>92</td><td>Jaleco ??</td><td>MOERO Pro Soccer</td></tr>
+ <tr><td>93</td><td>??</td><td>Fantasy Zone</td></tr>
+ <tr><td>94</td><td>??</td><td>Senjou no Ookami</td></tr>
+ <tr><td>95</td><td>Namco 118</td><td>Dragon Buster</td></tr>
+ <tr><td>96</td><td>Bandai ??</td><td>Oeka Kids</td></tr>
+ <tr><td>97</td><td>??</td><td>Kaiketsu Yanchamaru</td></tr>
+ <tr><td>99</td><td>VS System 8KB VROM Switch</td><td>VS SMB, VS Excite Bike</td></tr>
+ <tr><td>105</td><td>NES-EVENT</td><td>Nintendo World Championships</td></tr>
+ <tr><td>107</td><td>??</td><td>Magic Dragon</td></tr>
+ <tr><td>112</td><td>Asder</td><td>Sango Fighter, Hwang Di</td></tr>
+ <tr><td>113</td><td>MB-91</td><td>Deathbots</td></tr>
+ <tr><td>114</td><td>??</td><td>The Lion King</td></tr>
+ <tr><td>115</td><td>??</td><td>Yuu Yuu Hakusho Final, Thunderbolt 2, Shisen Mahjian 2</td></tr>
+ <tr><td>117</td><td>??</td><td>San Guo Zhi 4</td></tr>
+ <tr><td>118</td><td>MMC3-TLSROM/TKSROM Board</td><td>Ys 3, Goal! 2, NES Play Action Football</td></tr>
+ <tr><td>119</td><td>MMC3-TQROM Board</td><td>High Speed, Pin*Bot</td></tr>
+ <tr><td>133</td><td>Sachen SA72008</td><td>Jovial Race</td></tr>
+ <tr><td>134</td><td>Sachen 74LS374N</td><td>Olympic IQ</td></tr>
+ <tr><td>135</td><td>Sachen 8259A</td><td>Super Pang</td></tr>
+ <tr><td>140</td><td>Jaleco ??</td><td>Bio Senshi Dan</td></tr>
+ <tr><td>144</td><td>AGCI 50282</td><td>Death Race</td></tr>
+ <tr><td>150</td><td>Camerica BF9097</td><td>FireHawk</td></tr>
+ <tr><td>151</td><td>Konami VS System Expansion</td><td>VS The Goonies, VS Gradius</td></tr>
+ <tr><td>152</td><td>??</td><td>Arkanoid 2, Saint Seiya Ougon Densetsu</td></tr>
+ <tr><td>153</td><td>Bandai ??</td><td>Famicom Jump 2</td></tr>
+ <tr><td>154</td><td>Namco ??</td><td>Devil Man</td></tr>
+ <tr><td>155</td><td>MMC1 w/o normal WRAM disable</td><td>The Money Game, Tatakae!! Rahmen Man</td></tr>
+ <tr><td>156</td><td>??</td><td>Buzz and Waldog</td></tr>
+ <tr><td>157</td><td>Bandai Datach ??</td><td>Datach DBZ, Datach SD Gundam Wars, **EEPROM is not emulated</td></tr>
+ <tr><td>158</td><td nowrap="nowrap">RAMBO 1 Derivative</td><td>Alien Syndrome</td></tr>
+ <tr><td>160</td><td>(same as mapper 90)</td><td>(same as mapper 90)</td></tr>
+ <tr><td>180</td><td>??</td><td>Crazy Climber</td></tr>
+ <tr><td>182</td><td>??</td><td>Super Donkey Kong</td></tr>
+ <tr><td>184</td><td>??</td><td>Wing of Madoola, The</td></tr>
+ <tr><td>185</td><td>CNROM w/ CHR ROM unmapping</td><td>Banana, Mighty Bomb Jack, Spy vs Spy(Japanese)</td></tr>
+ <tr><td>189</td><td>??</td><td>Thunder Warrior, Street Fighter 2 (Yoko)</td></tr>
+ <tr><td>193</td><td>Mega Soft</td><td>Fighting Hero</td></tr>
+ <tr><td>206</td><td>DEIROM</td><td>Karnov</td></tr>
+ <tr><td>207</td><td>Taito ??</td><td>Fudou Myouou Den</td></tr>
+ <tr><td>208</td><td>??</td><td>Street Fighter IV (by Gouder)</td></tr>
+ <tr><td>209</td><td>(mapper 90 w/ name-table control mode enabled)</td><td>Shin Samurai Spirits 2, Power Rangers III</td></tr>
+ <tr><td>210</td><td>Namco ??</td><td>Famista '92, Famista '93, Wagyan Land 2</td></tr>
+ <tr><td>215</td><td>Bootleg multi-cart ??</td><td>Super\ 308\ 3-in-1\</td></tr>
+ <tr><td>217</td><td>Bootleg multi-cart ??</td><td>Golden Card 6-in-1</td></tr>
+ <tr><td>222</td><td>Bootleg ??</td><td>Dragon Ninja</td></tr>
+ <tr><td>228</td><td>Action 52</td><td>Action 52, Cheetahmen 2</td></tr>
+ <tr><td>232</td><td>BIC-48</td><td>Quattro Arcade, Quattro Sports</td></tr>
+ <tr><td>234</td><td>Multi-cart ??</td><td>Maxi-15</td></tr>
+ <tr><td>240</td><td>??</td><td>Gen Ke Le Zhuan, Shen Huo Le Zhuan</td></tr>
+ <tr><td>242</td><td>??</td><td>Wai Xing Zhan Shi</td></tr>
+ <tr><td>244</td><td>??</td><td>Decathalon</td></tr>
+ <tr><td>246</td><td>??</td><td>Fong Shen Ban</td></tr>
+ <tr><td>248</td><td>??</td><td>Bao Qing Tian</td></tr>
+ <tr><td>249</td><td>Waixing ??</td><td>??</td></tr>
+ <tr><td>250</td><td>??</td><td>Time Diver Avenger</td></tr>
+ </tbody></table>
+ </p>
+ <p>
+ <a name="features-expansion-unif"><h4>UNIF</h4></a>
+ </p> 
+ <p>
+Mednafen supports the following UNIF boards. The prefixes HVC-, NES-,
+BTL-, and BMC- are omitted, since they are currently ignored in
+Mednafen's UNIF loader. </p>
+ <p>
+ <table width="100%" border="1">
+ <tbody><tr><th colspan="2">Group:</th></tr>
+ <tr><th>Name:</th><th>Game Examples:</th></tr>
+ <tr><th colspan="2">Bootleg:</th></tr>
+ <tr><td>BioMiracleA</td><td>Mario Baby</td></tr>
+ <tr><td>MARIO1-MALEE2</td><td>Super Mario Bros. Malee 2</td></tr>
+ <tr><td>NovelDiamond9999999in1</td><td>Novel Diamond 999999 in 1</td></tr>
+ <tr><td>Super24in1SC03</td><td>Super 24 in 1</td></tr>
+ <tr><td>Supervision16in1</td><td>Supervision 16-in-1</td></tr>
+ <tr><th colspan="2">Unlicensed:</th></tr>
+ <tr><td>UNL-603-5052</td><td>Contra Fighter</td></tr>
+ <tr><td>NINA-06</td><td>F-15 City War</td></tr>
+ <tr><td>Sachen-8259A</td><td>Super Cartridge Version 1</td></tr>
+ <tr><td>Sachen-8259B</td><td>Silver Eagle</td></tr>
+ <tr><td>Sachen-74LS374N</td><td>Auto Upturn</td></tr>
+ <tr><td>SA-016-1M</td><td>Master Chu and the Drunkard Hu</td></tr>
+ <tr><td>SA-72007</td><td>Sidewinder</td></tr>
+ <tr><td>SA-72008</td><td>Jovial Race</td></tr>
+ <tr><td>SA-0036</td><td>Mahjong 16</td></tr>
+ <tr><td>SA-0037</td><td>Mahjong Trap</td></tr>
+ <tr><td>TC-U01-1.5M</td><td>Challenge of the Dragon</td></tr>
+ <tr><td>8237</td><td>Pocahontas Part 2</td></tr>
+ <tr><th colspan="2">MMC1:</th></tr>
+ <tr><td>SAROM</td><td>Dragon Warrior</td></tr>
+ <tr><td>SBROM</td><td>Dance Aerobics</td></tr>
+ <tr><td>SCROM</td><td>Orb 3D</td></tr>
+ <tr><td>SEROM</td><td>Boulderdash</td></tr>
+ <tr><td>SGROM</td><td>Defender of the Crown</td></tr>
+ <tr><td>SKROM</td><td>Dungeon Magic</td></tr>
+ <tr><td>SLROM</td><td>Castlevania 2</td></tr>
+ <tr><td>SL1ROM</td><td>Sky Shark</td></tr>
+ <tr><td>SNROM</td><td>Shingen the Ruler</td></tr>
+ <tr><td>SOROM</td><td>Nobunaga's Ambition</td></tr>
+ <tr><th colspan="2">MMC2:</th></tr>
+ <tr><td>PEEOROM</td><td>Mike Tyson's Punch Out</td></tr>
+ <tr><td>PNROM</td><td>Punch Out</td></tr>
+ <tr><th colspan="2">MMC3:</th></tr>
+ <tr><td>TFROM</td><td>Legacy of the Wizard</td></tr>
+ <tr><td>TGROM</td><td>Megaman 4</td></tr>
+ <tr><td>TKROM</td><td>Kirby's Adventure</td></tr>
+ <tr><td>TKSROM</td><td>Ys 3</td></tr>
+ <tr><td>TLROM</td><td>Super Spike V'Ball</td></tr>
+ <tr><td>TLSROM</td><td>Goal! 2</td></tr>
+ <tr><td>TR1ROM</td><td>Gauntlet</td></tr>
+ <tr><td>TQROM</td><td>Pinbot</td></tr>
+ <tr><td>TSROM</td><td>Super Mario Bros. 3</td></tr>
+ <tr><td>TVROM</td><td>Rad Racer 2</td></tr>
+ <tr><th colspan="2">MMC5:</th></tr>
+ <tr><td>EKROM</td><td>Gemfire</td></tr>
+ <tr><td>ELROM</td><td>Castlevania 3</td></tr>
+ <tr><td>ETROM</td><td>Nobunaga's Ambition 2</td></tr>
+ <tr><td>EWROM</td><td>Romance of the Three Kingdoms 2</td></tr>
+ <tr><th colspan="2">MMC6:</th></tr>
+ <tr><td>HKROM</td><td>Star Tropics</td></tr>
+ <tr><th colspan="2">FME7:</th></tr>
+ <tr><td>BTR</td><td>Batman: Return of the Joker</td></tr>
+ <tr><th colspan="2">Nintendo Discrete Logic:</th></tr>
+ <tr><td>CNROM</td><td>Gotcha</td></tr>
+ <tr><td>CPROM</td><td>Videomation</td></tr>
+ <tr><td>GNROM</td><td>Super Mario Bros./Duck Hunt</td></tr>
+ <tr><td>MHROM</td><td></td></tr>
+ <tr><td>NROM-128</td><td>Mario Bros.</td></tr>
+ <tr><td>NROM-256</td><td>Super Mario Bros.</td></tr>
+ <tr><td>RROM-128</td><td></td></tr>
+ <tr><td>UNROM</td><td>Megaman</td></tr>
+ </tbody></table>
+ </p>
+ <a name="features-expansion-fds"><h4>Famicom Disk System</h4></a>
+ <p>
+        You will need the FDS BIOS ROM image in the base Mednafen directory.
+        It must be named "disksys.rom".  Mednafen will not load FDS games
+	without this file.
+ </p>
+        Two types of FDS disk images are supported:  disk images with the
+        FWNES-style header, and disk images with no header.  The number
+	of sides on headerless disk images is calculated by the total file
+	size, so don't put extraneous data at the end of the file.
+ <p>
+	If a loaded disk image is written to during emulation, Mednafen will store the modified 
+	disk image in the save games directory, which is by default "sav" under the base 
+	directory.
+ </p>
+ <a name="features-expansion-genie"><h4>Game Genie</h4></a>
+ <p>
+The Game Genie ROM image is loaded from the path specified by the
+setting "nes.ggrom", or, if that string is not set, the file "gg.rom"
+in the base directory when Game Genie emulation is enabled.
+</p><p>
+        The ROM image may either be the 24592 byte iNES-format image, or
+        the 4352 byte raw ROM image.
+</p>
+ <a name="features-expansion-vs"><h4>VS Unisystem</h4></a>
+ <p>
+Mednafen currently only supports VS Unisystem ROM images in the
+iNES format.  DIP switches and coin insertion are both emulated.  
+The following games are supported, and have palettes provided(though not 
+necessarily 100% accurate or complete):
+	</p><ul>
+	 <li>Battle City
+         </li><li>Castlevania
+	 </li><li>Clu Clu Land
+	 </li><li>Dr. Mario
+	 </li><li>Duck Hunt
+	 </li><li>Excitebike
+	 </li><li>Excitebike (Japanese)
+	 </li><li>Freedom Force
+         </li><li>Goonies, The
+         </li><li>Gradius
+         </li><li>Gumshoe
+	 </li><li>Hogan's Alley
+	 </li><li>Ice Climber
+	 </li><li>Ladies Golf
+	 </li><li>Mach Rider
+	 </li><li>Mach Rider (Japanese)
+	 </li><li>Mighty Bomb Jack	(Japanese)
+	 </li><li>Ninja Jajamaru Kun (Japanese)
+	 </li><li>Pinball
+	 </li><li>Pinball (Japanese)
+	 </li><li>Platoon
+	 </li><li>RBI Baseball
+         </li><li>Slalom
+	 </li><li>Soccer
+	 </li><li>Star Luster
+         </li><li>Stroke and Match Golf
+         </li><li>Stroke and Match Golf - Ladies
+         </li><li>Stroke and Match Golf (Japanese)
+         </li><li>Super Mario Bros.
+	 </li><li>Super Sky Kid
+	 </li><li>Super Xevious
+	 </li><li>Tetris
+         </li><li>TKO Boxing
+	 </li><li>Top Gun
+	</li></ul>
+ <p></p>
+ </li></ul>
+ </li><li><a name="features-lynx"><h3>Atari Lynx</h3></a>
+Atari Lynx emulation requires the 512 Lynx boot ROM image, named as "lynxboot.img", and placed in the Mednafen base
+directory.
+ </li><li><a name="features-gba"><h3>GameBoy Advance</h3></a>
+  <ul>
+   <li>Uses built-in BIOS emulation by default, or a real BIOS through the "gba.bios" setting.</li>
+   <li>Custom colormap support through the "gba.colormap" setting.</li>
+   <li>Support for specifying the backup memory type on a per-game basis:
+    <blockquote>
+    <pre>Create a file with the same name as the ROM image, with the extension replaced with "type", in the "sav" directory under the Mednafen base directory.
+     Example: SexyPlumbers.gba -&gt; SexyPlumbers.type
+
+One or more of the following strings(on separate lines) may appear in the file:
+        sram
+        flash
+        eeprom
+        sensor
+
+Additionally, the flash size can be specified by specifying the size(real size, or divided by 1024) after the type, like "flash 128" or "flash 131072".</pre>
+    </blockquote>
+   </li>
+  </ul>
+ </li>
+ <li><a name="features-pce"><h3>PC Engine/SuperGrafx</h3></a>
+ <ul>
+  <li>All sprite sizes supported.</li>
+  <li>16-sprites per line limit emulated.</li>
+  <li>Accurate HuC6280 flags emulation.</li>
+  <li>Dot-clock emulation for more accurate aspect ratios.</li>
+  <li>Very accurate and tonally-correct(thanks to Blip_Synth) PSG emulation.</li>
+  <li>Support for Street Fighter 2's HuCard hardware.</li>
+  <li>Support for Populous's backup RAM.</li>
+  <li>6-button pad emulation.</li>
+  <li>Mouse emulation.</li>
+ </ul>
+ </li><li><a name="features-pcfx"><h3>PC-FX</h3></a></li>
+  <ul>
+   <li>Internal backup memory and external backup memory are emulated.</li>
+   <li>Motion decoder RLE and JPEG-like modes are emulated.</li>
+   <li>KING Background 0 scaling+rotation mode is supported.</li>
+   <li>Mouse emulation.</li>
+  </ul>
+</ul>
+<hr>
+ <a name="features-ips"><h3>Automatic IPS Patching</h3></a>
+ <p>
+        Place the IPS file in the same directory as the file to load,
+        and name it filename.ips.
+</p>
+	<pre>        Examples:       Boat.nes - Boat.nes.ips
+                        Boat.zip - Boat.zip.ips
+                        Boat.nes.gz - Boat.nes.gz.ips
+                        Boat     - Boat.ips
+        </pre>
+	<p>
+        Some operating systems and environments will hide file extensions.
+        Keep this in mind if you are having trouble.
+	</p>
+	<p>
+        Patching is supported for all supported formats, but it will probably only be useful
+	for fixed-position file formats.
+ </p>
+ <a name="features-cdrom"><h3>CD-ROM Emulation</h3></a>
+ <p>
+With PC Engine CD and PC-FX emulation, Mednafen can load CD-ROM games
+from a physical CD-ROM, or a ripped/dumped copy of the disc, such as
+CUE+BIN. Using a ripped copy of the disc is recommended, due to speed
+issues and to the fact that physical CDs will be missing pregaps from
+the point of view of the emulated system. </p>
+ <p> For ripped disc images, Mednafen supports "CUE" sheets and
+cdrdao "TOC" files. Mednafen supports raw, simple storage formats
+supported by libsndfile(MS WAV, AIFF/AIFC, AU/SND, etc.), Ogg Vorbis,
+and MusePack audio files referenced by CUE sheets. MP3 is not
+supported, and will not be supported. </p>
+ <p> The cdrdao "TOC" support in Mednafen includes support for
+"RW_RAW" subchannel data, needed for CD+G. Note that Mednafen assumes
+that the Q subchannel is also included in the RW_RAW data area in the
+ripped image(even though the name "RW_RAW" would suggest it isn't
+present, cdrdao seems to included it). If the Q subchannel data is
+missing from the RW_RAW data area in the ripped image, Mednafen's CD
+emulation will not work properly. </p>
+ <p> Since 0.8.4, Mednafen will perform simple data correction
+on ripped CDROM images that contain EDC and L-EC
+data(2352-byte-per-sector "raw" rips"). It calculates the real EDC, and
+if it doesn't match the EDC recorded for that sector, it will evaluate
+the L-EC data to repair the data. If the data is unrepairable, an error
+message will be displayed. <br>
+  <b>This may cause problems with naive patches that don't
+update the error-correction data(at least the 32-bit EDC, if that's
+correct, the L-EC data will be ignored)!<b>  If you wish to use such an invalid patch, set the setting "cdrom.lec_eval" to 0.
+ </b></b></p>
+<b><b> </b></b><hr>
+<b><b> </b></b><hr width="100%">
+<b><b> <a name="using"><h2>Using Mednafen</h2></a>
+ </b></b><p>
+<b><b> 
+ </b></b></p>
+<b><b> <a name="using-keys"><h3>Key Assignments</h3></a>
+ </b></b><p>
+<b><b> </b></b><table border="1">
+ <tbody><tr><th>Key(s):</th><th>Action:</th><th>Configuration String:</th></tr>
+ <tr><td>F1</td><td>Toggle in-game quick help screen.</td><td>toggle_help</td></tr>
+ <tr><td>F5</td><td>Save state.</td><td>save_state</td></tr>
+ <tr><td>F7</td><td>Load state.</td><td>load_state</td></tr>
+ <tr><td>0-9</td><td>Select save state slot.</td><td>"0" through "9"</td></tr>
+ <tr><td>-</td><td>Decrement selected save state slot.</td><td>state_slot_dec</td></tr>
+ <tr><td>=</td><td>Increment selected save state slot.</td><td>state_slot_inc</td></tr>
+ <tr><td>Shift + F5</td><td>Record movie.</td><td>save_movie</td></tr>
+ <tr><td>Shift + F7</td><td>Play movie.</td><td>load_movie</td></tr>
+ <tr><td>Shift + 0-9</td><td>Select movie slot.</td><td>"m0" through "m9"</td></tr>
+ <tr><td>ALT + C</td><td>Toggle cheat console.</td><td>togglecheatview</td></tr>
+ <tr><td>ALT + T</td><td>Toggle cheats active.</td><td>togglecheatactive</td></tr>
+ <tr><td>T</td><td>Enable network play console input.</td><td>togglenetview</td></tr>
+ <tr><td>ALT + D</td><td>Toggle debugger.</td><td>toggle_debugger</td></tr>
+ <tr><td>ALT + A</td><td>Enter frame advance mode, if not already in it, and advance the frame.</td><td>advance_frame</td></tr>
+ <tr><td>ALT + R</td><td>Exit frame advance mode.</td><td>run_normal</td></tr>
+ <tr><td>SHIFT + F1</td><td>Toggle frames-per-second display(from top to bottom, the display format is: virtual, rendered, blitted).</td><td>toggle_fps_view</td></tr>
+ <tr><td>ALT + S</td><td>Toggle 600-frame(~10 seconds on NES) save-state rewinding functionality, disabled by default.</td><td>state_rewind_toggle</td></tr>
+ <tr><td>Backspace</td><td>Rewind emulation, if save-state rewinding functionality is enabled, up to 600 frames.</td><td>state_rewind</td></tr>
+ <tr><td>F9</td><td>Save screen snapshot.</td><td>take_snapshot</td></tr>
+ <tr><td>Alt + Enter</td><td>Toggle fullscreen mode.</td><td>toggle_fs</td></tr>
+ <tr><td nowrap="nowrap">Ctrl + 1<br>through<br>Ctrl + 9</td><td>Toggle layer.</td><td>"tl1" through "tl9"</td></tr>
+ <tr><td>~</td><td>Fast-forward.</td><td>fast_forward</td></tr>
+ <tr><td>CTRL + SHIFT + <i>i</i></td><td>Select input device on input port <i>i</i>(1-5).<br><b>Note:</b>Many games do not expect input devices to change while the game is running, and thus may require a hard reset.</td><td>device_select<i>i</i></td></tr>
+ <tr><td>F2</td><td>Activate in-game input configuration process for a command key.</td><td>input_configc</td></tr>
+ <tr><td nowrap="nowrap">Scroll Lock</td><td>Toggle input grabbing(use this to use the PC Engine mouse properly in windowed mode).</td><td>toggle_grab_input</td></tr>
+ <tr><td>Shift + Scroll Lock</td><td>Toggle
+input grabbing AND command disabling(used for giving almost unhindered
+button access to an emulated device; most useful when emulating the
+Famicom's Family Keyboard).</td><td>toggle_cdisable</td></tr>
+ <tr><td>F10</td><td>Reset.</td><td>reset</td></tr>
+ <tr><td>F11</td><td>Hard reset(toggle power switch).</td><td>power</td></tr>
+ <tr><td>Escape/F12</td><td>Exit(the emulator, or netplay chat mode).</td><td>exit</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><hr>
+<b><b> <a name="using-keys-nes"><h4>NES</h4></a>
+ </b></b><p>
+<b><b> </b></b><table border="1">
+ <tbody><tr><th>Key(s):</th><th>Action:</th><th>Configuration String:</th></tr>
+ <tr><td>ALT + SHIFT + 1</td><td>Activate in-game input configuration process for input port 1.</td><td>input_config1</td></tr>
+ <tr><td>ALT + SHIFT + 2</td><td>Activate in-game input configuration process for input port 2.</td><td>input_config2</td></tr>
+ <tr><td>ALT + SHIFT + 3</td><td>Activate in-game input configuration process for input port 3.</td><td>input_config3</td></tr>
+ <tr><td>ALT + SHIFT + 4</td><td>Activate in-game input configuration process for input port 4.</td><td>input_config4</td></tr>
+ <tr><td>ALT + SHIFT + 5</td><td>Activate in-game input configuration process for the Famicom expansion port.</td><td>input_config5</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> <a name="using-keys-vs"><h4>VS Unisystem</h4></a>
+ </b></b><p><b><b>  
+ </b></b><table border="1">
+ <tbody><tr><th>Key:</th><th>Action:</th><th>Configuration String:</th></tr>
+ <tr><td>F8</td><td>Insert coin.</td><td>insert_coin</td></tr>
+ <tr><td>F6</td><td>Show/Hide dip switches.</td><td>toggle_dipview</td></tr>
+ <tr><td>1-8</td><td>Toggle dip switches(when dip switches are shown).</td><td>"1" through "8"</td></tr>
+ </tbody></table>
+<b><b> </b></b></p><b><b> 
+ <a name="using-keys-fds"><h4>Famicom Disk System</h4></a>
+ </b></b><p>
+<b><b> </b></b><table border="1">
+ <tbody><tr><th>Key:</th><th>Action:</th><th>Configuration String:</th></tr>
+ <tr><td>F6</td><td>Select disk and disk side.</td><td>select_disk</td></tr>
+ <tr><td>F8</td><td>Eject or Insert disk.</td><td>insert_eject_disk</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> <a name="using-keys-barcode"><h4>Barcode Readers</h4></a>
+ </b></b><p>
+<b><b> </b></b><table border="1">
+ <tbody><tr><th>Key:</th><th>Action:</th><th>Configuration String:</th></tr>
+ <tr><td>0-9</td><td>Barcode digits(after activating barcode input).</td><td>"0" through "9"</td></tr>
+ <tr><td>F8</td><td>Activate barcode input/scan barcode.</td><td>activate_barcode</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> <a name="using-keys-nesgamepad"><h4>Game Pad</h4></a>
+</b></b><p>
+<table border="1">
+ <tbody><tr><th>Key:</th><th nowrap="nowrap">Button on Emulated Gamepad:</th></tr>
+ <tr><td>Keypad 2</td><td>B</td></tr>
+ <tr><td>Keypad 3</td><td>A</td></tr>
+ <tr><td>Enter/Return</td><td>Start</td></tr>
+ <tr><td>Tab</td><td>Select</td></tr>
+ <tr><td>Z</td><td>Down</td></tr>
+ <tr><td>W</td><td>Up</td></tr>
+ <tr><td>A</td><td>Left</td></tr>
+ <tr><td>S</td><td>Right</td></tr>
+ </tbody></table>
+<b><b> </b></b></p><b><b> 
+ <a name="using-keys-powerpad"><h4>Power Pad</h4></a>
+ </b></b><p><b><b>  
+ </b></b><table border="1">
+  <tbody><tr><th colspan="4">Side B</th></tr>
+  <tr><td width="25%">O</td><td width="25%">P</td>
+	<td width="25%">[</td><td width="25%">]</td></tr>
+  <tr><td>K</td><td>L</td><td>;</td><td>'</td></tr>
+  <tr><td>M</td><td>,</td><td>.</td><td>/</td></tr>
+ </tbody></table>
+<b><b> <br>
+ </b></b><table border="1">
+  <tbody><tr><th colspan="4">Side A</th></tr>           
+  <tr><td width="25%"></td><td width="25%">P</td>
+        <td width="25%">[</td><td width="25%"></td></tr>
+  <tr><td>K</td><td>L</td><td>;</td><td>'</td></tr>
+  <tr><td></td><td>,</td><td>.</td><td></td></tr>
+ </tbody></table>
+<b><b> </b></b></p><b><b> 
+ <a name="using-keys-fkb"><h4>Family Keyboard</h4></a>
+ </b></b><p><b><b>  
+         All emulated keys are mapped to the closest open key on the PC
+          keyboard, with a few exceptions.  The emulated "@" key is
+          mapped to the "`"(grave) key, and the emulated "kana" key
+          is mapped to the "Insert" key(in the 3x2 key block above the
+          cursor keys).
+ </b></b></p><b><b> 
+ </b></b><p>
+<b><b> To use the Family Keyboard emulation properly, press <b>SHIFT</b> + <b>Scroll Lock</b>, which
+ will cause input to be grabbed from the window manager(if present) and disable Mednafen's other internal command processing.
+ </b></b></p>
+<b><b> <a name="using-keys-hypershot"><h4>HyperShot Controller</h4></a>
+ </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><td></td><th>Run</th><th>Jump</th></tr>
+  <tr><th>Controller I</th><td>Q</td><td>W</td></tr>
+  <tr><th>Controller II</th><td>E</td><td>R</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+
+<b><b> <a name="using-keys-mahjong"><h4>Mahjong Controller</h4></a>
+ </b></b><p>
+<b><b>  </b></b><table border="1">
+   <tbody><tr><th>Emulated Mahjong Controller:</th><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td></tr>
+   <tr><th>PC Keyboard:</th><td>Q</td><td>W</td><td>E</td><td>R</td><td>T</td><td>A</td><td>S</td><td>D</td><td>F</td><td>G</td><td>H</td><td>J</td><td>K</td><td>L</td></tr>
+  </tbody></table>
+<b><b>  <br>
+  </b></b><table border="1">
+   <tbody><tr><th>Emulated Mahjong Controller:</th><td>SEL</td><td>ST</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td></tr>
+   <tr><th>PC Keyboard:</th><td>Z</td><td>X</td><td>C</td><td>V</td><td>B</td><td>N</td><td>M</td>
+  </tr></tbody></table>
+<b><b> </b></b></p>
+<b><b> <a name="using-keys-quiz"><h4>Quiz King Controller</h4></a>
+ </b></b><p>
+<b><b>  </b></b><table border="1">
+   <tbody><tr><th>Emulated Buzzer:</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+   <tr><th>PC Keyboard:</th><td>Q</td><td>W</td><td>E</td><td>R</td><td>T</td><td>Y</td></tr>
+  </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><hr>
+<b><b> <a name="using-keys-atarilynx"><h4>Atari Lynx</h4></a>
+ </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key(s):</th><th>Action:</th><th>Configuration String:</th></tr>
+  <tr><td>ALT + SHIFT + 1</td><td>Activate in-game input configuration process for Lynx pad.</td><td>input_config1</td></tr>
+  <tr><td>F8</td><td>Rotate the screen<i>(and optionally input controlled, by setting lynx.rotateinput)</i></td><td>rotatescreen</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key:</th><th nowrap="nowrap">Action/Button:</th></tr>
+  <tr><td>Keypad 2</td><td>B</td></tr>
+  <tr><td>Keypad 3</td><td>A</td></tr>
+  <tr><td>Keypad 4 &amp; Enter/Return</td><td>Pause</td></tr>
+  <tr><td>Keypad 7</td><td>Option 1</td></tr>
+  <tr><td>Keypad 1</td><td>Option 2</td></tr>
+  <tr><td>W</td><td>Up</td></tr>
+  <tr><td>Z</td><td>Down</td></tr>
+  <tr><td>A</td><td>Left</td></tr>
+  <tr><td>S</td><td>Right</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><hr>
+<b><b> <a name="using-keys-gameboy"><h4>GameBoy/GameBoy Color/GameBoy Advance</h4></a>
+ </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key(s):</th><th>Action:</th><th>Configuration String:</th></tr>
+  <tr><td>ALT + SHIFT + 1</td><td>Activate in-game input configuration process for GameBoy pad.</td><td>input_config1</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key:</th><th nowrap="nowrap">Action/Button:</th></tr>
+  <tr><td>Keypad 2</td><td>B</td></tr>
+  <tr><td>Keypad 3</td><td>A</td></tr>
+  <tr><td>Enter/Return</td><td>Start</td></tr>
+  <tr><td>Tab</td><td>Select</td></tr>
+  <tr><td>Keypad 5</td><td>Shoulder Left(GBA only)</td></tr>
+  <tr><td>Keypad 6</td><td>Shoulder Right(GBA only)</td></tr>
+  <tr><td>W</td><td>Up</td></tr>
+  <tr><td>Z</td><td>Down</td></tr>
+  <tr><td>A</td><td>Left</td></tr>
+  <tr><td>S</td><td>Right</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+
+<b><b> </b></b><hr>
+<b><b> <a name="using-keys-ngp"><h4>Neo Geo Pocket/Neo Geo Pocket Color</h4></a>
+ </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key(s):</th><th>Action:</th><th>Configuration String:</th></tr>
+  <tr><td>ALT + SHIFT + 1</td><td>Activate in-game input configuration process for Neo Geo Pocket pad.</td><td>input_config1</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key:</th><th nowrap="nowrap">Action/Button:</th></tr>
+  <tr><td>Keypad 2</td><td>A</td></tr>
+  <tr><td>Keypad 3</td><td>B</td></tr>
+  <tr><td>Enter/Return</td><td>Option</td></tr>
+  <tr><td>W</td><td>Up</td></tr>
+  <tr><td>Z</td><td>Down</td></tr>
+  <tr><td>A</td><td>Left</td></tr>
+  <tr><td>S</td><td>Right</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><hr>
+
+<b><b> <a name="using-keys-pce"><h4>PC Engine(TurboGrafx 16)/SuperGrafx</h4></a>
+ </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key(s):</th><th>Action:</th><th>Configuration String:</th></tr>
+  <tr><td>ALT + SHIFT + 1</td><td>Activate in-game input configuration process for gamepad 1.</td><td>input_config1</td></tr>
+  <tr><td>ALT + SHIFT + 2</td><td>Activate in-game input configuration process for gamepad 2.</td><td>input_config2</td></tr>
+  <tr><td>ALT + SHIFT + 3</td><td>Activate in-game input configuration process for gamepad 3.</td><td>input_config3</td></tr>
+  <tr><td>ALT + SHIFT + 4</td><td>Activate in-game input configuration process for gamepad 4.</td><td>input_config4</td></tr>
+  <tr><td>ALT + SHIFT + 5</td><td>Activate in-game input configuration process for gamepad 5.</td><td>input_config5</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key:</th><th nowrap="nowrap">Action/Button:</th></tr>
+  <tr><td>Keypad 2</td><td>II</td></tr>
+  <tr><td>Keypad 3</td><td>I</td></tr>
+  <tr><td>Enter/Return</td><td>Run</td></tr>
+  <tr><td>Tab</td><td>Select</td></tr>
+  <tr><td>W</td><td>Up</td></tr>
+  <tr><td>Z</td><td>Down</td></tr>
+  <tr><td>A</td><td>Left</td></tr>
+  <tr><td>S</td><td>Right</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><hr>
+<b><b> <a name="using-keys-pcfx"><h4>PC-FX</h4></a>
+ </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key(s):</th><th>Action:</th><th>Configuration String:</th></tr>
+  <tr><td>ALT + SHIFT + 1</td><td>Activate in-game input configuration process for device on virtual inport port 1.</td><td>input_config1</td></tr>
+  <tr><td>ALT + SHIFT + 2</td><td>Activate in-game input configuration process for device on virtual inport port 2.</td><td>input_config2</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key:</th><th nowrap="nowrap">Action/Button:</th></tr>
+  <tr><td>Keypad 4</td><td>IV</td></tr>
+  <tr><td>Keypad 5</td><td>V</td></tr>
+  <tr><td>Keypad 6</td><td>VI</td></tr>
+  <tr><td>Keypad 1</td><td>III</td></tr>
+  <tr><td>Keypad 2</td><td>II</td></tr>
+  <tr><td>Keypad 3</td><td>I</td></tr>
+  <tr><td>Enter/Return</td><td>Run</td></tr>
+  <tr><td>Tab</td><td>Select</td></tr>
+  <tr><td>W</td><td>Up</td></tr>
+  <tr><td>Z</td><td>Down</td></tr>
+  <tr><td>A</td><td>Left</td></tr>
+  <tr><td>S</td><td>Right</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><hr>
+
+<b><b> <a name="using-keys-wonderswan"><h4>WonderSwan</h4></a>
+ </b></b><p>
+<b><b> The "X Cursor" buttons are usually used for directional control with horizontal-layout games, 
+ while the "Y Cursor" buttons are usually used for directional control with vertical-layout games.
+ Additionally, the opposite buttons are often treated as action buttons...because of this,
+ <big><b>you must *NOT* configure the X cursor buttons and Y cursor buttons to the same real buttons or keys.</b></big>  Games will not behave
+ well at all if you do.
+ </b></b></p>
+<b><b> </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key(s):</th><th>Action:</th><th>Configuration String:</th></tr>
+  <tr><td>ALT + SHIFT + 1</td><td>Activate in-game input configuration process for WonderSwan pad.</td><td>input_config1</td></tr>
+  <tr><td>F8</td><td>Rotate the screen<i>(and optionally input controlled, by setting wswan.rotateinput)</i></td><td>rotatescreen</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><p>
+<b><b> </b></b><table border="1">
+  <tbody><tr><th>Key:</th><th nowrap="nowrap">Action/Button:</th></tr>
+  <tr><td>Keypad 2</td><td>B</td></tr>
+  <tr><td>Keypad 3</td><td>A</td></tr>
+  <tr><td>Enter/Return</td><td>Start</td></tr>
+  <tr><td>W</td><td nowrap="nowrap">Up, X Cursors</td></tr>
+  <tr><td>Z</td><td nowrap="nowrap">Down, X Cursors</td></tr>
+  <tr><td>A</td><td nowrap="nowrap">Left, X Cursors</td></tr>
+  <tr><td>S</td><td nowrap="nowrap">Right, X Cursors</td></tr>
+  <tr><td>UP</td><td nowrap="nowrap">Up, Y Cursors</td></tr>
+  <tr><td>DOWN</td><td nowrap="nowrap">Down, Y Cursors</td></tr>
+  <tr><td>LEFT</td><td nowrap="nowrap">Left, Y Cursors</td></tr>
+  <tr><td>RIGHT</td><td nowrap="nowrap">Right, Y Cursors</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><hr>
+<b><b> <a name="using-cli"><h3>Command-line</h3></a>
+ </b></b><p>
+<b><b>  Mednafen supports arguments passed on the command line.   Arguments
+  are taken in the form of "-parameter value".  Some arguments are valueless.
+  Arguments that have both a parameter and a value will be saved in the
+  configuration file.
+  </b></b></p>
+<b><b>  </b></b><p>
+<b><b>  <b>Caution:</b> Any arguments that change emulation behavior as
+seen from the emulated game are shown with bold text in the table. One
+should be conscious of these settings if one has changed them from the
+default values when using network play or movies, as they can cause
+desychronizations if not set the same among hosts(or between the
+recording emulator and the playing emulator). </b></b></p>
+<b><b>  </b></b><p>
+<b><b> Arguments listed in this table that contain &lt;system&gt;
+should have that string replaced with "nes", "pce", "pcfx", "gb",
+"gba", "lynx", "ngp", "wswan", or "player"(used with music file
+playing).<br>Example: <b>&lt;system&gt;.xscale</b> becomes <b>nes.xscale</b>.
+  </b></b></p><p>
+<b><b>  </b></b><b><b><br>Bilinear interpolation, and alpha blending of some OSD layers are not available with the "SDL framebuffer" driver.
+  </b></b><table border="1">
+   <tbody><tr><th>Argument:</th><th>Value Type:</th><th>Default value:</th><th>Description:</th></tr>
+   <tr><td>-loadcd x</td><td>string</td><td>n/a</td><td>Load
+and boot a CD for system "x"(only "pce" is valid). This argument
+modifies the usage of the filename component of the command-line. For
+example, "mednafen -loadcd pce /somewhere/over/the/rainbow/game.cue"
+will load the CUE sheet as the emulated CDROM.<br>"mednafen -loadcd pce" will load from the default physical CDROM device.
+   </td></tr><tr><td>-autosave x</td><td>boolean</td><td>0</td><td>Automatically save the game state when a game is closed and reload the state when the game is loaded again.</td></tr>
+   <tr><td>-srwcompressor x</td><td>string</td><td>minilzo</td><td>Compressor to use with state rewinding:  "minilzo", "quicklz", or "blz".</td></tr>
+   <tr><td>-srwframes x</td><td>integer</td><td>600</td><td>Number of frames to keep states for when state rewinding is enabled.</td></tr>
+   <tr><td>-dfmd5 x</td><td>boolean</td><td>1</td><td>Include the MD5 hash of the loaded game in the filenames of the data file(save states, SRAM backups) Mednafen creates.</td></tr>
+   <tr><td nowrap="nowrap">-snapname x</td><td>boolean</td><td>0</td><td>If value is true, use an alternate naming scheme(file base and numeric) for screen snapshots.</td></tr>
+
+   <tr><td>-path_snap x</td><td>string</td><td></td><td>Path override for screen snapshots.  Set to an empty string or 0 to disable.</td></tr>
+   <tr><td>-path_sav x</td><td>string</td><td></td><td>Path override for save games and nonvolatile memory.  Set to an empty string or 0 to disable.<br><br>
+	<b>WARNING:</b> If you use Famicom Disk System emulation, and you set this setting to the same directory FDS disk images are in, and set the 
+	setting "dfmd5" to 0, you run the risk of corrupting your disk images.
+    </td></tr>
+
+   <tr><td>-path_state x</td><td>string</td><td></td><td>Path override for save states.  Set to an empty string or 0 to disable.</td></tr>
+   <tr><td>-path_movie x</td><td>string</td><td></td><td>Path override for movies.  Set to an empty string or 0 to disable.</td></tr>
+   <tr><td>-path_cheat x</td><td>string</td><td></td><td>Path override for cheats.  Set to an empty string or 0 to disable.</td></tr>
+   <tr><td>-path_palette x</td><td>string</td><td></td><td>Path override for custom palettes.  Set to an empty string or 0 to disable.</td></tr>
+
+   <tr><td>-filesys.snap_samedir x</td><td>boolean</td><td>0</td><td>Write screen snapshots to the same directory the ROM/disk/disc image is in.
+		Takes precedence over the "path_snap" setting.</td></tr>
+   <tr><td>-filesys.sav_samedir x</td><td>boolean</td><td>0</td><td>Write/Read
+save games and nonvolatile memory to/from the same directory the
+ROM/disk/disc image is in. Takes precedence over the "path_sav" setting.<br><br>
+       <b>WARNING:</b> If you use Famicom Disk System emulation, and you set this to 1, and set the 
+        setting "dfmd5" to 0, you run the risk of corrupting your disk images.
+    </td></tr>
+
+   <tr><td>-filesys.state_samedir x</td><td>boolean</td><td>0</td><td>Write/Read save states to/from the same directory the ROM/disk/disc image is in.
+                Takes precedence over the "path_state" setting.</td></tr>
+
+   <tr><td>-filesys.movie_samedir x</td><td>boolean</td><td>0</td><td>Write/Read movies to/from the same directory the ROM/disk/disc image is in.
+                Takes precedence over the "path_movie" setting.</td></tr>
+
+   <tr><td>-filesys.disablesavegz x</td><td>boolean</td><td>0</td><td>Disable gzip compression when saving save states and backup memory(excluding GameBoy).</td></tr>
+
+
+   <tr><td>-ffspeed x</td><td>integer</td><td>2</td><td>Specifies the speed multiplier to be used in fast-forward mode.</td></tr>
+   <tr><td>-fftoggle x</td><td>boolean</td><td>0</td><td>Treat the fast-forward button as a toggle.</td></tr>
+   <tr><td>-ffnosound</td><td>boolean</td><td>0</td><td>Silence sound output when fast-forwarding.</td></tr>
+   <tr><td nowrap="nowrap">-nothrottle x</td><td>boolean</td><td>0</td><td>If value is true, disable the speed throttling that is used when sound emulation is disabled.</td></tr>
+
+   <tr><td>-sound x</td><td>boolean</td><td>1</td><td>If value is true, enable sound emulation and output.</td></tr>
+   <tr><td>-soundrate x</td><td>integer</td><td>48000</td><td>Specifies the sound playback rate, in frames per second("Hz").  Rates higher than 48000, and lower than 8192, are not supported.</td></tr>
+   <tr><td>-soundvol x</td><td>integer</td><td>100</td><td>Sound volume, in percent, from 0 to 100.</td></tr>
+   <tr><td>-soundbufsize x</td><td>integer</td><td>32(52 for Win32)</td><td>Specifies the desired size of the sound buffer, in milliseconds.</td></tr>
+   <tr><td>-sounddriver x</td><td>string</td><td>default</td><td>Select
+sound driver. The following choices are possible, sorted by preference
+when "default" driver is used, but dependent on being compiled in:
+<ul>
+<li>oss
+</li><li>alsa
+</li><li>dsound
+</li><li>sdl <i>not recommended, but here if anyone/platform needs it :)</i>
+</li><li>jack
+</li></ul>
+</td></tr>
+<tr><td>-sounddevice x</td><td>string</td><td>default</td><td>Select sound output device.<br><br><b>ALSA NOTE:</b>
+When using the alsa driver, the "default" translates to "hw", not
+"default", before being sent to the ALSA API. This is necessary because
+ALSA's "default" audio device has very poor buffering control
+capabilities. If you really want to use ALSA's "default" device, use
+"sexyal-literal-default".</td></tr>
+   <tr><td>-&lt;system(pce, gba, gb, ngp only)&gt;.forcemono x</td><td>boolean</td><td>0</td><td>Force monophonic(instead of stereo) sound output.</td></tr>
+   <tr><td>-autofirefreq x</td><td>integer</td><td>3</td><td>Set
+auto fire frequency to ~60Hz / (x + 1). Replace "60" with "50" for PAL
+games. A value of "0" disables the configured autofire buttons.</td></tr>
+   <tr><td>-analogthreshold x</td><td>integer</td><td>75</td><td>Threshold for detecting a "button" press on analog axis, in percent.</td></tr>
+   <tr><td>-ckdelay x</td><td>integer</td><td>0</td><td>The
+length of time, in milliseconds, that a button/key corresponding to a
+"dangerous" command like power, reset, exit, load state, etc. must be
+pressed before the command is executed.</td></tr>
+
+   <tr><th colspan="4" align="left">Game Boy Advance:</th></tr>
+   <tr><td>-gba.bios</td><td>string</td><td></td><td>Path to optional GBA BIOS ROM image(it will automatically be used when this setting is set).</td></tr>
+   <tr><td>-gba.colormap</td><td>string</td><td></td><td>Load custom color map from specified file.</td></tr>
+
+
+   <tr><th colspan="4" align="left">Lynx:</th></tr>
+   <tr><td>-lynx.rotateinput x</td><td>boolean</td><td>1</td><td>"Rotate" emulated D-pad along with the screen when rotated.</td></tr>
+
+   <tr><th colspan="4" align="left">Neo Geo Pocket:</th></tr>
+   <tr><td><b>-ngp.language</b></td><td>integer</td><td>1</td><td>If =1, tell games to display in English, if =0, in Japanese.</td></tr>
+   <tr><th colspan="4" align="left">NES:</th></tr>
+   <tr><td><b>-nes.fnscan x</b></td><td>boolean</td><td>1</td><td>If
+value is true, scan the NES ROM image filename for (U), (J), and (E),
+and set the emulated video system(NTSC/PAL) accordingly, with NTSC
+preferred.<p><b>Warning:</b>This option may break NES network play when enabled IF the players are using ROM images with different filenames.</p></td></tr>
+   <tr><td><b>-nes.input.port<i>i</i> x</b></td><td>string</td><td>gamepad</td><td>Select input device for input port <i>i</i>(1-4).  Valid strings are "none" and "gamepad"; "zapper", "powerpada", and "powerpadb" can be used on ports 1 and 2, as well.</td></tr>
+   <tr><td><b>-nes.input.fcexp x</b></td><td>string</td><td>none</td><td>Select Famicom expansion port device.  Valid strings are "none", "shadow", "arkanoid", "4player", and "fkb".</td></tr>
+   <tr><td><b>-nes.nofs x</b></td><td>boolean</td><td>0</td><td>If value is true, disable four-score emulation.</td></tr>
+   <tr><td><b>-nes.gg x</b></td><td>boolean</td><td>0</td><td>Enable NES Game Genie emulation.</td></tr>
+   <tr><td><b>-nes.ggrom x</b></td><td>string</td><td></td><td>Path to Game Genie ROM image.</td></tr>
+
+   <tr><td nowrap="nowrap">-nes.n106bs x</td><td>boolean</td><td>0</td><td>Enable less-accurate, but better sounding, Namco 106(mapper 19) sound emulation.</td></tr>
+   <tr><td nowrap="nowrap">-nes.no8lim x</td><td>boolean</td><td>0</td><td>No 8-sprites-per-scanline limit option.</td></tr>
+   <tr><td>-nes.cpalette x</td><td>string</td><td>0</td><td>Load a custom global NES palette from file "x".  To stop using a custom palette:<br>mednafen -cpalette "" game.nes</td></tr>
+   <tr><td>-nes.ntscblitter x</td><td>boolean</td><td>0</td><td>Enable NTSC color generation and blitter(only used when NTSC games are played).<br><b>NOTE:</b>If
+your refresh rate isn't very close to 60.1Hz(+-0.1), you will need to
+set the nes.ntsc.mergefields setting to "1" to avoid excessive
+flickering.</td></tr>
+   <tr><td>-nes.ntsc.preset x</td><td>string</td><td>none</td><td>Select video quality/type preset.  Valid strings are: none, composite, svideo, rgb, and monochrome.</td></tr>
+   <tr><td>-nes.ntsc.mergefields x</td><td>boolean</td><td>0</td><td>Merge fields to partially work around !=60.1Hz refresh rates.</td></tr>
+   <tr><td>-nes.ntsc.saturation x</td><td>real</td><td>0</td><td>NTSC composite blitter saturation, -1 &lt;= x &lt;= 1.</td></tr>
+   <tr><td>-nes.ntsc.hue x</td><td>real</td><td>0</td><td>NTSC composite blitter hue, -1 &lt;= x &lt;= 1.</td></tr>
+   <tr><td>-nes.ntsc.sharpness x</td><td>real</td><td>0</td><td>NTSC composite blitter sharpness, -1 &lt;= x &lt;= 1.</td></tr>
+   <tr><td>-nes.ntsc.brightness x</td><td>real</td><td>0</td><td>NTSC composite blitter brightness, -1 &lt;= x &lt;= 1.</td></tr>
+   <tr><td>-nes.ntsc.contrast x</td><td>real</td><td>0</td><td>NTSC composite blitter contrast, -1 &lt;= x &lt;= 1.</td></tr>
+   <tr><td>-nes.ntsc.matrix x</td><td>boolean</td><td>0</td><td>Enable NTSC custom decoder matrix.</td></tr>
+   <tr><td>-nes.ntsc.matrix.0 x</td><td>real</td><td>1.539</td><td>NTSC custom decoder matrix element 0(red, value * V).</td></tr>
+   <tr><td>-nes.ntsc.matrix.1 x</td><td>real</td><td>-0.622</td><td>NTSC custom decoder matrix element 1(red, value * U).</td></tr>
+   <tr><td>-nes.ntsc.matrix.2 x</td><td>real</td><td>-0.571</td><td>NTSC custom decoder matrix element 2(green, value * V).</td></tr>
+   <tr><td>-nes.ntsc.matrix.3 x</td><td>real</td><td>-0.185</td><td>NTSC custom decoder matrix element 3(green, value * U).</td></tr>
+   <tr><td>-nes.ntsc.matrix.4 x</td><td>real</td><td>0.000</td><td>NTSC custom decoder matrix element 4(blue, value * V).</td></tr>
+   <tr><td>-nes.ntsc.matrix.5 x</td><td>real</td><td>2.000</td><td>NTSC custom decoder matrix element 5(blue, value * U.</td></tr>
+   
+   <tr><td><b>-nes.pal x</b></td><td>boolean</td><td>0</td><td>If value is true, emulate a PAL NES.  Otherwise emulate an NTSC NES.</td></tr>
+   <tr><td>-nes.clipsides x</td><td>boolean</td><td>0</td><td>If value is true, clip leftmost and rightmost 8 columns of pixels of the video output.</td></tr>
+   <tr><td>-nes.slstart x</td><td>integer</td><td>8</td>
+	<td>First scanline to be rendered in NTSC emulation mode(when PAL emulation is disabled).</td></tr>
+   <tr><td>-nes.slend x</td><td>integer</td><td>231</td>
+	<td>Last scanline to be rendered in NTSC emulation mode.</td></tr>
+     <tr><td nowrap="nowrap">-nes.slstartp x</td><td>integer</td><td>0</td>
+        <td>First scanline to be rendered in PAL emulation mode.</td></tr>
+   <tr><td>-nes.slendp x</td><td>integer</td><td>239</td>
+        <td>Last scanline to be rendered in PAL emulation mode.</td></tr>
+
+  <tr><th colspan="4" align="left">PC Engine/TurboGrafx 16:</th></tr>
+  <tr><td>-pce.adpcmlp x</td><td>boolean</td><td>0</td><td>When
+enabled, Mednafen will apply a lowpass filter to ADPCM sound output
+with a rolloff frequency dependent on the current ADPCM playback
+frequency. This makes ADPCM voices sound less "harsh", however, the
+downside is that it will cause many ADPCM sound effects to sound a bit
+muffled.</td></tr>
+  <tr><td>-pce.cdpsgvolume x</td><td>integer</td><td>100</td><td>PSG volume when playing a CD game, 0-200(%)</td></tr>
+  <tr><td>-pce.cddavolume x</td><td>integer</td><td>100</td><td>CD-DA volume, 0-200(%).</td></tr>
+  <tr><td>-pce.adpcmvolume x</td><td>integer</td><td>100</td><td>ADPCM volume, 0-200(%).</td></tr>
+  <tr><td><b>-pce.forcesgx x</b></td><td>boolean</td><td>0</td><td>Force
+SuperGrafx emulation. Enabling this option is not strictly necessary to
+run unrecognized PCE ROM images in SuperGrafx mode; ROM images with a
+file extension of ".sgx" will automatically enable SuperGrafx emulation.</td></tr>
+  <tr><td><b>-pce.arcadecard x</b></td><td>boolean</td><td>1</td><td>Enable Arcade Card emulation.</td></tr>
+  <tr><td><b>-pce.ocmultiplier x</b></td><td>integer</td><td>1</td><td>CPU overclock multiplier.<br><b>WARNING:</b>
+This changes low-level emulation behavior in a way that is not possible
+on a real machine, so don't be surprised if a few games won't work or
+have glitches with a setting other than 1!</td></tr>
+  <tr><td><b>-pce.cdspeed x</b></td><td>integer</td><td>1</td><td>CD-ROM data transfer speed multiplier.<br><b>WARNING:</b>
+pce.ocmultiplier should be set to a value greater than or equal to
+pce.cdspeed, as the PCE's BIOS routines are not designed for higher
+transfer rates than in a real PC Engine. Also, don't expect games with
+HuVideo to work properly if you set this to a value other than 1!</td></tr>
+  <tr><td>-pce.nospritelimit x</td><td>boolean</td><td>0</td><td>No 16-sprites-per-scanline limit option.<br><b>WARNING:</b> This option may cause undesirable graphics glitching on some games(such as "Bloody Wolf").</td></tr>
+  <tr><td><b>-pce.cdbios x</b></td><td>string</td><td></td><td>Path to the CD BIOS</td></tr>
+  <tr><td>-pce.mouse_sensitivity x</td><td>real</td><td>0.50</td><td>Set emulated mouse sensitivity.</td></tr>
+  <tr><td>-pce.disable_softreset x</td><td>boolean</td><td>0</td><td>If set, when RUN+SEL are pressed simultaneously, disable both buttons temporarily.</td></tr>
+
+  <tr><th colspan="4" align="left">PC-FX:</th></tr>
+  <tr><td><b>-pcfx.bios x</b></td><td>string</td><td></td><td>Path to the ROM BIOS</td></tr>
+  <tr><td><b>-pcfx.cdspeed x</b></td><td>integer</td><td>2</td><td>Emulated
+CDROM speed. Setting this to "1" will probably cause most games with
+FMV to
+break, but setting it higher than 2, the default, will decrease loading
+times in most games by some degree. The maximum allowed value is "10".</td></tr>
+  <tr><td>-pcfx.high_dotclock_width x</td><td>integer</td><td>1024</td><td>Emulated
+width for 7.16MHz dot-clock mode: 256, 341, or 1024. Lower values are
+faster, but will cause some degree of pixel distortion.</td></tr>
+  <tr><td><b>-pcfx.input.port1 x</b></td><td>string</td><td>gamepad</td><td>Select input device for input port 1(none, gamepad, mouse).</td></tr>
+  <tr><td><b>-pcfx.input.port2 x</b></td><td>string</td><td>gamepad</td><td>Select input device for input port 2(none, gamepad, mouse).</td></tr>
+  <tr><td>-pcfx.mouse_sensitivity x</td><td>real</td><td>1.50</td><td>Set emulated mouse sensitivity.</td></tr>
+  <tr><td>-pcfx.nospritelimit x</td><td>boolean</td><td>0</td><td>No 16-sprites-per-scanline(per VDC) limit option.</td></tr>
+  <tr><td>-pcfx.disable_softreset x</td><td>boolean</td><td>0</td><td>If set, when RUN+SEL are pressed simultaneously, disable both buttons temporarily.</td></tr>
+  <tr><td>-pcfx.use_mmap x</td><td>boolean</td><td>0</td><td>Enables
+experimental a virtual 32-bit address space generation via anonymous
+mmap(). This generally
+will not work on 32-bit CPUs; 64-bit CPUs(with 64-bit virtual address
+spaces) will work. This virtual address space is used to speed up
+emulated V810
+instruction reads. There is some memory-mapped I/O in the V810 memory
+space, and if a game tries to run code from this I/O space, it
+obviously won't work.
+However, no commercial PC-FX games are known to do this.
+<br><br>This requires working mmap() and munmap() function calls, and
+the MAP_ANON/MAP_ANONYMOUS flag, or a readable and writeable /dev/zero.
+It works well on Linux, and should work on *BSD.
+</td></tr>
+  <tr><th colspan="4" align="left">WonderSwan:</th></tr>
+  <tr><td>-wswan.rotateinput x</td><td>boolean</td><td>0</td><td>"Rotate" emulated D-pads along with the screen when rotated.</td></tr>
+  <tr><td><b>-wswan.name x</b></td><td>string</td><td>Mednafen</td><td>Name</td></tr>
+  <tr><td><b>-wswan.byear x</b></td><td>integer</td><td>1989</td><td>Birth Year</td></tr>
+  <tr><td><b>-wswan.bmonth x</b></td><td>integer</td><td>6</td><td>Birth Month</td></tr>
+  <tr><td><b>-wswan.bday x</b></td><td>integer</td><td>23</td><td>Birth Day</td></tr>
+  <tr><td><b>-wswan.sex x</b></td><td>string</td><td>F</td><td>Sex</td></tr>
+  <tr><td><b>-wswan.blood x</b></td><td>string</td><td>O</td><td>Blood Type</td></tr>
+
+  <tr><th>Argument:</th><th>Value Type:</th><th>Default value:</th><th>Description:</th></tr>
+  <tr><td>-connect</td><td></td><td></td><td>Trigger to connect to remote host after the game is loaded.</td></tr>
+  <tr><td>-nethost x</td><td>string</td><td></td><td>Set server's hostname to connect to during netplay.</td></tr>
+  <tr><td>-netport x</td><td>integer</td><td>4046</td><td>Set port number to connect to on remote host.</td></tr>
+  <tr><td>-netpassword x</td><td>string</td><td></td><td>The optional password used to connect to a netplay server.</td></tr>
+  <tr><td>-netlocalplayers x</td><td>integer</td><td>1</td><td>Set the number of local players on your system during netplay.</td></tr>
+  <tr><td>-netnick x</td><td>string</td><td></td><td>Set nickname used during chat when using netplay.</td></tr>
+  <tr><td>-vdriver x</td><td>string</td><td>opengl</td><td>Select which video output "driver" to use. <ul><li>opengl = OpenGL + SDL</li><li>sdl = SDL framebuffer</li></ul>
+  </td></tr><tr><td>-&lt;system&gt;.vblur x</td><td>boolean</td><td>0</td><td>Motion
+blur each frame with the last frame. This blur happens before all other
+filters and scaling. Additionally, enabling this will disable internal
+frameskipping.</td></tr>
+  <tr><td>-&lt;system&gt;.vblur.accum x</td><td>boolean</td><td>0</td><td>Accumulate color data rather than discarding it.</td></tr>
+  <tr><td>-&lt;system&gt;.vblur.accum.amount x</td><td>real</td><td>50</td><td>Blur amount in accumulation mode, specified in percentage of accumulation buffer to mix with the current frame.</td></tr>
+<tr><td>-&lt;system&gt;.videoip x</td><td>boolean</td><td>0<br>PCE: 1</td><td>Use bilinear interpolation.</td></tr>
+  <tr><td>-&lt;system&gt;.scanlines x</td><td>integer</td><td>0</td><td>If non-zero, enable scanlines; scanline_brightness = 100% - (100% / x) </td></tr>
+  <tr><td>-&lt;system&gt;.special x</td><td>string</td><td>none</td><td>Use
+a special video scaling filter applied before OpenGL rasterization. The
+destination rectangle is NOT altered by
+this setting, so if you have xscale and yscale set to "2", and try to
+use a 3x scaling filter like hq3x, the image is not going to look that
+great. The nearest-neighbor scalers are
+intended for use with bilinear interpolation enabled, at high
+resolutions(such as 1280x1024; nn2x(or nny2x) + bilinear interpolation
++ fullscreen stretching at this resolution looks quite nice).
+<ul>
+<li><b>none</b> or <b>0</b> (disable special scaler)
+</li><li><b>hq2x</b>
+</li><li><b>hq3x</b>
+</li><li><b>hq4x</b>
+</li><li><b>scale2x</b>
+</li><li><b>scale3x</b>
+</li><li><b>scale4x</b>
+</li><li><b>nn2x</b> (Nearest-neighbor 2x)
+</li><li><b>nn3x</b> (Nearest-neighbor 3x)
+</li><li><b>nn4x</b> (Nearest-neighbor 4x)
+</li><li><b>nny2x</b> (Nearest-neighbor 2x, y axis only)
+</li><li><b>nny3x</b> (Nearest-neighbor 3x, y axis only)
+</li><li><b>nny4x</b> (Nearest-neighbor 4x, y axis only)
+</li></ul>
+</td></tr>
+<tr><td>-&lt;system&gt;.pixshader x</td><td>string</td><td>none</td><td>Enable
+specified OpenGL pixel shader. Obviously, this will only work in OpenGL
+mode(-vdriver 0), and only on cards and OpenGL implementations that
+support pixel shaders, otherwise you will get a black screen, or
+Mednafen may display an error message when starting up. Bilinear
+interpolation is disabled with pixel shaders, and any interpolation, if
+present, will be noted in the description of each pixel shader.
+<ul>
+<li><b>none</b> (disable pixel shader)
+</li><li><b>ipxnoty</b> Linear interpolation on X axis only.
+</li><li><b>ipynotx</b> Linear interpolation on Y axis only.
+</li><li><b>ipsharper</b> Sharper bilinear interpolation.
+</li><li><b>ipxnotysharper</b> Sharper version of "ipxnoty".
+</li><li><b>ipynotxsharper</b> Sharper version of "ipynotx".
+</li><li><b>scale2x</b> Scale2X effect. It can be used with the
+"scale2x", "scale3x", and "scale4x" special scalers, giving "scale4x",
+"scale6x", and "scale8x", respectively.
+</li></ul>
+</td>
+</tr>
+
+  <tr><td>-&lt;system&gt;.stretch x</td><td>boolean</td><td>0</td><td>Stretch to fill screen when in fullscreen mode.</td></tr>
+  <tr><td>-glvsync x</td><td>boolean</td><td>1</td><td>Attempt to synchronize OpenGL page flips to vertical retrace period.<p>
+        <b>Note:</b>
+Additionally, if this setting is 1, and the environment variable
+"__GL_SYNC_TO_VBLANK" is not set at all(either 0 or any value), then it
+will be set to "1". This has the effect of forcing vblank
+synchronization when running under Linux with NVidia's drivers.</p></td></tr>
+
+  <tr><td>-&lt;system&gt;.xscale<br>(-&lt;system&gt;.xscalefs)<br>/<br>-&lt;system&gt;.yscale<br>(-&lt;system&gt;.yscalefs)</td><td>real</td><td nowrap="nowrap">NES: 2(2)/2(2)<br>GB: 4(4)/4(4)<br>GBA: 3(3)/3(3)<br>Lynx: 4(4)/4(4)<br>NGP: 4(3)/4(3)<br>PCE: 3(3)/3(3)<br>PC-FX: 3(3)/3(3)<br>WSwan: 3(2)/3(2)</td><td>Specify the scaling factor for each axis.</td></tr>
+  <tr><td nowrap="nowrap">-&lt;system&gt;.xres x<br>/<br>-&lt;system&gt;.yres y</td><td>integer</td><td nowrap="nowrap">NES: 640/480<br>GB: 800/600<br>GBA: 800/600<br>Lynx: 800/600<br>NGP: 640/480<br>PCE: 1024/768<br>PC-FX: 1024/768<br>WSwan: 640/480</td><td>Set the desired horizontal/vertical resolution when in fullscreen mode.</td></tr>
+  <tr><td>-fs</td><td>boolean</td><td>0</td><td>Full screen mode.</td></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><hr width="100%">
+<b><b> <a name="hacks"><h2>Game-specific Emulation Hacks</h2></a>
+ </b></b><p>
+<b><b> </b></b><table width="100%" border="1">
+  <tbody><tr><th>Title:</th><th>Description:</th><th>Source code files affected:</th></tr>
+  <tr><td>KickMaster</td>
+  <td>KickMaster relies on the low-level behavior of the MMC3(PPU A12 low-&gt;high transition)
+      to work properly in certain parts.  If an IRQ begins at the "normal" time on the
+      last visible scanline(239), the game will crash after beating the second boss and retrieving
+      the item.  The hack is simple, to clock the IRQ counter twice on scanline 238.
+  </td>
+  <td>src/nes/boards/mmc3.cpp</td></tr>
+  <tr><td nowrap="nowrap">Shougi Meikan '92<br>Shougin Meikan '93</td>
+  <td>The hack for these games is identical to the hack for KickMaster.</td>
+  <td>src/nes/boards/mmc3.cpp</td></tr>
+  <tr><td>Star Wars (PAL/European Version)</td>
+  <td>This game probably has the same(or similar) problem on Mednafen as KickMaster.  The
+   hack is to clock the IRQ counter twice on the "dummy" scanline(scanline before the first
+   visible scanline).</td><td>src/nes/boards/mmc3.c</td></tr>
+  </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><hr width="100%">
+<b><b> <a name="credits"><h2>Credits</h2></a>
+ </b></b><p>
+<b><b> </b></b><table width="100%" border="1">
+  <tbody><tr><th>Name:</th><th>Contribution(s):</th></tr>
+  <tr><td>\Firebug\</td><td>High-level mapper information.</td></tr>
+  <tr><td>Andrea Mazzoleni</td><td>Scale2x/Scale3x scalers included in Mednafen.</td></tr>
+  <tr><td>Bero</td><td>Original FCE source code.</td></tr>
+  <tr><td>Brad Taylor</td><td>NES sound information.</td></tr>
+  <tr><td>Charles MacDonald</td><td>PC Engine technical information.</td></tr>
+  <tr><td>EFX</td><td>Testing.</td></tr>
+  <tr><td>Fredrik Olson</td><td>NES four-player adapter information.</td></tr>
+  <tr><td>Gilles Vollant</td><td>PKZIP file loading functions.</td></tr>
+  <tr><td>goroh</td><td>Various documents.</td></tr>
+  <tr><td>Info-ZIP</td><td><a title="http://www.gzip.org/zlib/" href="http://www.gzip.org/zlib/">ZLIB</a></td></tr>
+  <tr><td>Jeremy Chadwick</td><td>General NES information.</td></tr>
+  <tr><td>kevtris</td><td>Low-level NES information and sound information.</td></tr>
+  <tr><td>Ki</td><td>Various technical information.</td></tr>
+  <tr><td>Mark Knibbs</td><td>Various NES information.</td></tr>
+  <tr><td>Marat Fayzullin</td><td>General NES information.</td></tr>
+  <tr><td>Matthew Conte</td><td>Sound information.</td></tr>
+  <tr><td>Maxim Stepin</td><td>hq2x and hq3x scalers included in Mednafen.</td></tr>
+  <tr><td>Mitsutaka</td><td>YM2413 emulator.</td></tr>
+  <tr><td>nori</td><td>FDS sound information.</td></tr>
+  <tr><td>rahga</td><td>Famicom four-player adapter information.</td></tr>
+  <tr><td>TheRedEye</td><td>ROM images, testing.</td></tr>
+  <tr><td>Xodnizel</td><td>FCE Ultra.</td></tr>
+  <tr><th colspan="2" align="right">...and everyone whose name my mind has misplaced.</th></tr>
+ </tbody></table>
+<b><b> </b></b></p>
+<b><b> </b></b><hr width="100%">
+<b><b> <a name="legal"><h2>Legal Stuff</h2></a>
+ </b></b><p>
+<b><b>  <b>libmpcdec:</b>
+  </b></b></p><blockquote>
+<b><b>  </b></b><pre><b><b>  Copyright (c) 2005, The Musepack Development Team
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are
+  met:
+
+  * Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+
+  * Redistributions in binary form must reproduce the above
+  copyright notice, this list of conditions and the following
+  disclaimer in the documentation and/or other materials provided
+  with the distribution.
+
+  * Neither the name of the The Musepack Development Team nor the
+  names of its contributors may be used to endorse or promote
+  products derived from this software without specific prior
+  written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  </b></b></pre>
+<b><b>  </b></b></blockquote>
+<b><b>  <b>Tremor:</b>
+  </b></b><blockquote>
+<pre><b><b>Copyright (c) 2002, Xiph.org Foundation
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+- Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+
+- Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+
+- Neither the name of the Xiph.org Foundation nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION
+OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</b></b></pre>
+<b><b>  </b></b></blockquote>
+<b><b><b>Gb_Snd_Emu:</b>
+</b></b><blockquote>
+<pre><b><b>/* Library Copyright (C) 2003-2004 Shay Green. Gb_Snd_Emu is free
+software; you can redistribute it and/or modify it under the terms of the
+GNU General Public License as published by the Free Software Foundation;
+either version 2 of the License, or (at your option) any later version.
+Gb_Snd_Emu is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+more details. You should have received a copy of the GNU General Public
+License along with Gb_Snd_Emu; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA */
+</b></b></pre>
+</blockquote>
+<b><b><b>Blip_Buffer:</b>
+</b></b><blockquote>
+<pre><b><b>Copyright (C) 2003-2006 Shay Green. This module is free software; you
+can redistribute it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version. This
+module is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
+more details. You should have received a copy of the GNU Lesser General
+Public License along with this module; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+</b></b></pre>
+</blockquote>
+<b><b><b>Sms_Snd_Emu(base for T6W28_Apu NGP code):</b>
+</b></b><blockquote>
+<pre><b><b>Copyright (C) 2003-2006 Shay Green. This module is free software; you
+can redistribute it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version. This
+module is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
+more details. You should have received a copy of the GNU Lesser General
+Public License along with this module; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+</b></b></pre>
+</blockquote>
+
+<b><b><b>Handy:</b>
+</b></b><blockquote>
+<pre><b><b>Copyright (c) 2004 K. Wilkins
+
+This software is provided 'as-is', without any express or implied warranty.
+In no event will the authors be held liable for any damages arising from
+the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+
+2. Altered source versions must be plainly marked as such, and must not
+   be misrepresented as being the original software.
+
+3. This notice may not be removed or altered from any source distribution.
+</b></b></pre>
+</blockquote>
+<b><b><b>Portions of PC Engine CD emulation:</b>
+</b></b><blockquote>
+<pre><b><b>        Copyright (C) 2004 Ki
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+</b></b></pre>
+</blockquote>
+<b><b><b>OKI MSM6258 ADPCM Decoder:</b>
+</b></b><blockquote>
+<pre><b><b>/*
+ * Copyright (c) 2001 Tetsuya Isaki. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. The name of the author may not be used to endorse or promote products
+ *    derived from this software without specific prior written permission
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ */
+</b></b></pre>
+</blockquote>
+<b><b><b>Scale2x:</b>
+</b></b><blockquote>
+<pre><b><b> * Copyright (C) 2001, 2002, 2003, 2004 Andrea Mazzoleni
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+</b></b></pre>
+</blockquote>
+<b><b><b>hq2x, hq3x, hq4x:</b>
+</b></b><blockquote>
+<pre><b><b>//Copyright (C) 2003 MaxSt ( maxst@hiend3d.com )
+
+//This program is free software; you can redistribute it and/or
+//modify it under the terms of the GNU Lesser General Public
+//License as published by the Free Software Foundation; either
+//version 2.1 of the License, or (at your option) any later version.
+//
+//This program is distributed in the hope that it will be useful,
+//but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+//Lesser General Public License for more details.
+//
+//You should have received a copy of the GNU Lesser General Public
+//License along with this program; if not, write to the Free Software
+//Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+</b></b></pre>
+</blockquote>
+<b><b><b>nes_ntsc:</b>
+</b></b><blockquote>
+<pre><b><b>/* Copyright (C) 2006 Shay Green. This module is free software; you
+can redistribute it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version. This
+module is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
+more details. You should have received a copy of the GNU Lesser General
+Public License along with this module; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA */
+</b></b></pre>
+</blockquote>
+<b><b><b>VisualBoyAdvance GameBoy and GBA code:</b>
+</b></b><blockquote>
+<pre><b><b>// VisualBoyAdvance - Nintendo Gameboy/GameboyAdvance (TM) emulator.
+// Copyright (C) 1999-2003 Forgotten
+// Copyright (C) 2004-2006 Forgotten and the VBA development team
+
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2, or(at your option)
+// any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software Foundation,
+// Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+</b></b></pre>
+</blockquote>
+<b><b><b>trio:</b>
+</b></b><blockquote>
+<pre><b><b> * Copyright (C) 1998 Bjorn Reese and Daniel Stenberg.
+ * Copyright (C) 2001 Bjorn Reese <breese@users.sourceforge.net>
+ * Copyright (C) 2001 Bjorn Reese and Daniel Stenberg.
+ *
+ * Permission to use, copy, modify, and distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR IMPLIED
+ * WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+ * MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE AUTHORS AND
+ * CONTRIBUTORS ACCEPT NO RESPONSIBILITY IN ANY CONCEIVABLE MANNER.
+</breese@users.sourceforge.net></b></b></pre>
+</blockquote>
+<b><b><b>ConvertUTF:</b>
+</b></b><blockquote>
+<pre><b><b> * Copyright 2001-2004 Unicode, Inc.
+ *
+ * Disclaimer
+ *
+ * This source code is provided as is by Unicode, Inc. No claims are
+ * made as to fitness for any particular purpose. No warranties of any
+ * kind are expressed or implied. The recipient agrees to determine
+ * applicability of information provided. If this file has been
+ * purchased on magnetic or optical media from Unicode, Inc., the
+ * sole remedy for any claim will be exchange of defective media
+ * within 90 days of receipt.
+ *
+ * Limitations on Rights to Redistribute This Code
+ *
+ * Unicode, Inc. hereby grants the right to freely use the information
+ * supplied in this file in the creation of products supporting the
+ * Unicode Standard, and to make copies of this file in any form
+ * for internal or external distribution as long as this notice
+ * remains attached.
+</b></b></pre>
+</blockquote>
+<b><b><b>MD5 Hashing:</b>
+</b></b><blockquote>
+<pre><b><b>/*
+ * RFC 1321 compliant MD5 implementation,
+ * by Christophe Devine <devine@cr0.net>;
+ * this program is licensed under the GPL.
+ */
+</devine@cr0.net></b></b></pre>
+</blockquote>
+<b><b><b>V810 Emulator:</b>
+</b></b><blockquote>
+<pre><b><b> * Copyright (C) 2006 David Tucker
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+</b></b></pre>
+</blockquote>
+<b><b><b>Unzipping Code:</b>
+</b></b><blockquote>
+<pre><b><b>/* unzip.c -- IO for uncompress .zip files using zlib
+   Version 1.01e, February 12th, 2005
+
+   Copyright (C) 1998-2005 Gilles Vollant
+
+   Read unzip.h for more info
+*/
+
+/* Decryption code comes from crypt.c by Info-ZIP but has been greatly reduced in terms of
+compatibility with older software. The following is from the original crypt.c. Code
+woven in by Terry Thorsen 1/2003.
+*/
+/*
+  Copyright (c) 1990-2000 Info-ZIP.  All rights reserved.
+
+  See the accompanying file LICENSE, version 2000-Apr-09 or later
+  (the contents of which are also included in zip.h) for terms of use.
+  If, for some reason, all these files are missing, the Info-ZIP license
+  also may be found at:  ftp://ftp.info-zip.org/pub/infozip/license.html
+*/
+</b></b></pre>
+</blockquote>
+
+<b><b><b>MiniLZO:</b>
+</b></b><blockquote>
+<pre><b><b>   Copyright (C) 2005 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 2004 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 2003 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 2002 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 2001 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 2000 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 1999 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 1998 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 1997 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 1996 Markus Franz Xaver Johannes Oberhumer
+   All Rights Reserved.
+
+   The LZO library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License as
+   published by the Free Software Foundation; either version 2 of
+   the License, or (at your option) any later version.
+
+   The LZO library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with the LZO library; see the file COPYING.
+   If not, write to the Free Software Foundation, Inc.,
+   59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+   Markus F.X.J. Oberhumer
+   &lt;markus@oberhumer.com&gt;
+   http://www.oberhumer.com/opensource/lzo/
+</b></b></pre>
+</blockquote>
+<b><b><b>Fuse Z80 emulation code:</b>
+</b></b><blockquote>
+<pre><b><b>   Copyright (c) 1999-2004 Philip Kendall, Witold Filipczyk
+
+   $Id: z80_ops.c,v 1.56 2004/06/09 10:55:09 pak21 Exp $
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+   Author contact information:
+
+   E-mail: pak21-fuse@srcf.ucam.org
+   Postal address: 15 Crescent Road, Wokingham, Berks, RG40 2DB, England
+</b></b></pre>
+</blockquote>
+<b><b><b>NeoPop Neo Geo Pocket (Color) Code:</b>
+</b></b><blockquote>
+<pre><b><b>//---------------------------------------------------------------------------
+// NEOPOP : Emulator as in Dreamland
+//
+// Copyright (c) 2001-2002 by neopop_uk
+//---------------------------------------------------------------------------
+//      This program is free software; you can redistribute it and/or modify
+//      it under the terms of the GNU General Public License as published by
+//      the Free Software Foundation; either version 2 of the License, or
+//      (at your option) any later version. See also the license.txt file for
+//      additional informations.
+</b></b></pre>
+</blockquote>
+<b><b><b>FPU Emulation:</b>
+</b></b><blockquote>
+<pre><b><b>/* Software floating-point emulation.
+   Copyright (C) 1997,1998,1999,2000,2002,2003,2005,2006 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+   Contributed by Richard Henderson (rth@cygnus.com),
+                  Jakub Jelinek (jj@ultra.linux.cz),
+                  David S. Miller (davem@redhat.com) and
+                  Peter Maydell (pmaydell@chiark.greenend.org.uk).
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, write to the Free
+   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+   02111-1307 USA.  */
+</b></b></pre>
+</blockquote>
+<b><b><b>PC-FX MJPEG Decoding:</b>
+</b></b><blockquote>
+<pre><b><b>/*
+ * jrevdct.c
+ *
+ * Copyright (C) 1991, 1992, Thomas G. Lane.
+ * This file is part of the Independent JPEG Group's software.
+ * For conditions of distribution and use, see the accompanying README file.
+ *
+ */
+<i>(The file is included in the Mednafen source distribution as mednafen/Documentation/README.jpeg4a)</i>
+</b></b></pre>
+</blockquote>
+<b><b><b>VRC7 Sound Emulation:</b>
+</b></b><blockquote>
+<pre><b><b>/*
+YM2413 emulator written by Mitsutaka Okazaki 2001
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications. To alter this software and redistribute it freely,
+if the origin of this software is not misrepresented.
+*/
+</b></b></pre>
+</blockquote>
+<b><b><b>NEC V30MZ Emulator:</b>
+</b></b><blockquote>
+<pre><b><b>/* This NEC V30MZ emulator may be used for purposes both commercial and noncommercial if you give the author, Bryan McPhail,
+   a small credit somewhere(such as in the documentation for an executable package).
+*/
+</b></b></pre>
+</blockquote>
+<b><b><b>NEC V30MZ disassembler(modified BOCHS x86 disassembler):</b>
+</b></b><blockquote>
+<b><b><i>Caution: Bochs' code is under the LGPL, but it is unclear if
+"or (at your option) any later version." applies to the x86
+disassembler code.</i>
+</b></b><pre><b><b>This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later version.
+ 
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+ 
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+</b></b></pre>
+</blockquote>
+<b><b><b>Cygne:</b><br>
+Cygne is distributed under the terms of the GNU GPL Version 2, 1991.<br>Copyright 2002 Dox, dox@space.pl.
+</b></b><p></p>
+
+<b><b><b>QuickLZ:</b>
+</b></b><blockquote>
+<pre><b><b>                     QuickLZ 1.20 data compression library
+                 Copyright (C) 2006-2007 Lasse Mikkel Reinhold
+
+QuickLZ can be used for free under the GPL-1 or GPL-2 license (where anything
+released into public must be open source) or under a commercial license if such
+has been acquired (see http://www.quicklz.com/order.html). The commercial license
+does not cover derived or ported versions created by third parties under GPL.
+</b></b></pre>
+</blockquote>
+<p></p>
+
+<b><b><b>Q-Subchannel CRC16 Code:</b>
+</b></b><blockquote>
+<pre><b><b>/*  cdrdao - write audio CD-Rs in disc-at-once mode
+ *
+ *  Copyright (C) 1998  Andreas Mueller <mueller@daneb.ping.de>
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+</mueller@daneb.ping.de></b></b></pre>
+</blockquote>
+
+<b><b><b>SMS Plus:</b>
+</b></b><blockquote>
+<pre><b><b>    Copyright (C) 1998-2004  Charles MacDonald
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+</b></b></pre>
+</blockquote>
+
+<b><b><b>EMU2413(used in SMS emulation):</b>
+</b></b><blockquote>
+<pre><b><b>  Copyright (C) Mitsutaka Okazaki 2004
+
+  This software is provided 'as-is', without any express or implied warranty.
+  In no event will the authors be held liable for any damages arising from
+  the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not
+     be misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+</b></b></pre>
+</blockquote>
+
+<b><b><b>blz:</b>
+</b></b><blockquote>
+<pre><b><b>/* Copyright (C) 2007 Shay Green. This module is free software; you can
+redistribute it and/or modify it under the terms of the GNU General Public
+License, version 2 or later, as published by the Free Software Foundation.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+details. You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+</b></b></pre>
+</blockquote>
+
+<b><b><b>CD-ROM data correction code:</b>
+</b></b><blockquote>
+<pre><b><b>/*  dvdisaster: Additional error correction for optical media.
+ *  Copyright (C) 2004-2007 Carsten Gnoerlich.
+ *  Project home page: http://www.dvdisaster.com
+ *  Email: carsten@dvdisaster.com  -or-  cgnoerlich@fsfe.org
+ *
+ *  The Reed-Solomon error correction draws a lot of inspiration - and even code -
+ *  from Phil Karn's excellent Reed-Solomon library: http://www.ka9q.net/code/fec/
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA,
+ *  or direct your browser at http://www.gnu.org.
+ */
+</b></b></pre>
+</blockquote>
+<b><b> </b></b></body></html>

@@ -1,0 +1,9 @@
+TODO:
+
+- input configuration dialog? (prolly a bit of work to implement...)
+- Cheat code frontend? (probably start a seperate project...)
+- i18n glade file and program strings with gettext
+- add the rest of the file extensions for guessing backend type (somebody want to send me a list of common ROM extensions for the different backends?)
+- better win32 support
+- test on various platforms (if you run it successfully on any platform besides linux, please email me to let me know)
+

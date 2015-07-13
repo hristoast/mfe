@@ -1,0 +1,12 @@
+Source: mednafenfe
+Section: games 
+Priority: extra
+Maintainer: Jordan Callicoat <MonkeeSage@gmail.com>
+Build-Depends: debhelper, python-dev
+Standards-Version: 3.7.2
+
+Package: mednafenfe
+Architecture: all
+Depends: python, mednafen, python-gtk2, python-glade2, python-configobj
+Description: A simple, GTK+ frontend / launcher for mednafen, written in python. 
+

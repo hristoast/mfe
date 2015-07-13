@@ -1,0 +1,5 @@
+debian/mednafenfe/usr/bin/mfe
+debian/mednafenfe/usr/share/mfe
+debian/mednafenfe/usr/share/applications
+debian/mednafenfe/usr/share/pixmaps
+debian/mednafenfe/usr/lib/python*/site-packages/mfe/*.py

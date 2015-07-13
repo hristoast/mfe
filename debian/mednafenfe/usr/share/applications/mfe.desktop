@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Mednafen
+Comment=Mednafen Frontend
+Exec=mfe
+Icon=mfe
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+StartupNotify=true

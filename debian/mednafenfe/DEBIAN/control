@@ -1,0 +1,9 @@
+Package: mednafenfe
+Version: 0.1.8-1
+Architecture: all
+Maintainer: Hristos N. Triantafillou <me@hristos.triantafillou.us>
+Installed-Size: 359
+Depends: python, mednafen, python-gtk2, python-glade2, python-configobj
+Section: games
+Priority: extra
+Description: A simple, GTK+ frontend / launcher for mednafen, written in python.

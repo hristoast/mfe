@@ -1,7 +1,5 @@
 usr/share/mfe
 usr/share/applications
 usr/share/pixmaps
-usr/bin
-usr/lib/python2.4/site-packages/mfe
-usr/lib/python2.5/site-packages/mfe
-usr/lib/python2.6/dist-packages/mfe
+usr/games
+usr/lib/python2.7/dist-packages/mfe

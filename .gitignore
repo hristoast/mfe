@@ -7,4 +7,7 @@
 auto-save-list
 tramp
 .\#*
-build
+build*
+*.egg-info
+debian/mednafenfe.substvars
+mednafenfe*.deb

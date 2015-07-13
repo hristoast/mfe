@@ -1,38 +1,39 @@
-#!/usr/bin/env python
+#!/usr/bin/python
+import os
 
-import os, glob
-from distutils.core import setup
-from mfe.mfeconst import __version__, is_posi, medhome
+from setuptools import setup
+from mfe.mfeconst import (__version__, author, author_email,
+                          description, is_posi, medhome, progname, url)
 
-dfiles = (["resources/mfe.ui", "resources/mfe.ini.spec", "resources/mednafen.html",
-           "resources/quit.png", "resources/help.png", "resources/engine.png",
-           "resources/about.png", "resources/clear.png", "resources/general.png",
-           "resources/doc.png", "resources/license.png", "resources/stop.png",
+dfiles = (["resources/mfe.ui", "resources/mfe.ini.spec",
+           "resources/mednafen.html", "resources/quit.png",
+           "resources/help.png", "resources/engine.png",
+           "resources/about.png", "resources/clear.png",
+           "resources/general.png", "resources/doc.png",
+           "resources/license.png", "resources/stop.png",
            "resources/mfe.png", "resources/save.png", "resources/play.png"])
 
 if is_posi:
-    scripts    = [os.path.join("scripts", "mfe")]
-    data_files = [("/usr/share/mfe", dfiles),
+    scripts = [os.path.join("scripts", progname)]
+    data_files = [("/usr/share/" + progname, dfiles),
                   ("/usr/share/pixmaps", ["resources/mfe.png"]),
-                  ("/usr/share/applications", ["resources/mfe.desktop"])
-                 ]
+                  ("/usr/share/applications", ["resources/mfe.desktop"])]
 
 else:
-    scripts    = [] #os.path.join("scripts", "start_mfe.pyw")]
-    data_files = [(os.path.join(medhome, "mfe"), dfiles),]
+    scripts = []
+    data_files = [(os.path.join(medhome, progname), dfiles), ]
 
-setup(name             = "mfe",
-      version          = __version__,
-      description      = "mednafen frontend / launcher",
-      long_description = "mednafen frontend / launcher",
-      author           = "Jordan Callicoat",
-      author_email     = "MonkeeSage@gmail.com",
-      url              = "",
-      download_url     = "",
-      license          = "MIT",
-      platforms        = ["POSIX", "OS X", "Windows"],
-      keywords         = ["Emulator", "Frontend"],
-      packages         = ["mfe"],
-      scripts          = scripts,
-      data_files       = data_files,
-      )
+setup(name=progname,
+      version=__version__,
+      description=description,
+      long_description=description,
+      author=author,
+      author_email=author_email,
+      url=url,
+      download_url=url,
+      license="MIT",
+      platforms=["POSIX", "OS X", "Windows"],
+      keywords=["Emulator", "Frontend"],
+      packages=["mfe"],
+      scripts=scripts,
+      data_files=data_files,)

@@ -1,7 +1,7 @@
 Source: mednafenfe
 Section: games 
 Priority: extra
-Maintainer: Jordan Callicoat <MonkeeSage@gmail.com>
+Maintainer: Hristos N. Triantafillou <me@hristos.triantafillou.us>
 Build-Depends: debhelper, python-dev
 Standards-Version: 3.7.2
 

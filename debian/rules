@@ -64,21 +64,11 @@ install: build
 
 	#find $(CURDIR)/mfe -name "*.py" -exec python -m py_compile {} \;
 
-	install -m 0755 -t $(PREFIX)/bin \
+	install -m 0755 -t $(PREFIX)/games \
 		$(CURDIR)/scripts/mfe
 
-	if test -d /usr/lib/python2.4 ; then \
-		install -m 0644 -t $(PREFIX)/lib/python2.4/site-packages/mfe \
-			$(CURDIR)/mfe/* ; \
-	fi
-
-	if test -d /usr/lib/python2.5 ; then \
-		install -m 0644 -t $(PREFIX)/lib/python2.5/site-packages/mfe \
-		 	$(CURDIR)/mfe/* ; \
-	fi
-
-	if test -d /usr/lib/python2.6 ; then \
-		install -m 0644 -t $(PREFIX)/lib/python2.6/dist-packages/mfe \
+	if test -d /usr/lib/python2.7 ; then \
+		install -m 0644 -t $(PREFIX)/lib/python2.7/dist-packages/mfe \
 		 	$(CURDIR)/mfe/* ; \
 	fi
 

@@ -9,5 +9,7 @@ tramp
 .\#*
 build*
 *.egg-info
+debian/mednafenfe
+debian/mednafenfe.debhelper.log
 debian/mednafenfe.substvars
 mednafenfe*.deb

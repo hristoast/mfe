@@ -1,11 +1,12 @@
 mednafenfe (0.1.8-1) jessie; urgency=low
 
-	* Removed vblur support (no longer supported by mednafen)
-	* Removed accumulate support (no longer supported by mednafen)
-	* Updated for modern systems
+  * Removed vblur support (no longer supported by mednafen)
+  * Removed accumulate support (no longer supported by mednafen)
+  * Updated for modern systems
 
  -- Hristos N. Triantafillou <me@hristos.triantafillou.us>  Mon, 13 Jul 2015 13:31:00 -0600
 
+mednafenfe (0.1.7-0ubuntu1) jaunty; urgency=low
 
   * Fix volume control slider
   * Apply patch from https://sourceforge.net/tracker/?func=detail&aid=3027601&group_id=229596&atid=1077559

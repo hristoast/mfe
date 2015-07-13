@@ -62,8 +62,6 @@ install: build
 	install -m 0644 -t $(PREFIX)/share/applications \
 		$(CURDIR)/resources/mfe.desktop
 
-	#find $(CURDIR)/mfe -name "*.py" -exec python -m py_compile {} \;
-
 	install -m 0755 -t $(PREFIX)/games \
 		$(CURDIR)/scripts/mfe
 
@@ -80,32 +78,13 @@ binary-indep: build install
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-#	dh_installchangelogs ChangeLog
 	dh_installdocs
-	dh_scrollkeeper
 	dh_installmime
-	dh_desktop
-#	dh_iconcache
-#	dh_gconf
-#	dh_installexamples
-#	dh_install
-#	dh_installmenu
-#	dh_installdebconf	
-#	dh_installlogrotate
-#	dh_installemacsen
-#	dh_installpam
-#	dh_installmime
-#	dh_installinit
-#	dh_installcron
-#	dh_installinfo
 	dh_installman
 	dh_link
 	dh_strip
 	dh_compress
 	dh_fixperms
-#	dh_perl
-#	dh_python
-#	dh_makeshlibs
 	dh_installdeb
 	dh_shlibdeps
 	dh_gencontrol

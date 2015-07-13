@@ -10,7 +10,7 @@ import os
 import sys
 import subprocess
 
-from mfeconst import *
+from mfeconst import binloc, inifile, is_posi, medbin, medhome, specfile
 
 try:
     from configobj import ConfigObj
@@ -167,7 +167,7 @@ class Config:
         self.config["default"]["stretch"]          = True
         self.config["default"]["interpolate"]      = False
         self.config["default"]["scanlines"]        = 0
-        self.config["default"]["vblur"]            = False
+        # self.config["default"]["vblur"]            = False
         self.config["default"]["accumulate"]       = False
         self.config["default"]["amount"]           = 0
         self.config["default"]["filter"]           = 0

@@ -10,17 +10,16 @@ import os
 import sys
 import gtk
 import gobject
-#import gtk.glade as glade
 import webbrowser
 import signal
-
 try:
     import gtkmozembed
     have_mozembed = True
 except:
     have_mozembed = False
-
+import mfeconst
 import mfeutil
+
 
 class MednafenFE:
 
@@ -31,13 +30,13 @@ class MednafenFE:
         self.create_stock_items()
 #        xml = glade.XML(mfeutil.gladefile)
         builder = gtk.Builder()
-        builder.add_from_file(mfeutil.gladefile)
+        builder.add_from_file(mfeconst.gladefile)
         self.get_objects(builder)
 
         try:
             self.runner = mfeutil.Runner()
         except mfeutil.Runner.LocateException:
-            self.errordialog.set_markup("Can't find mednafen binary! Dieing...")
+            self.errordialog.set_markup("Can't find mednafen binary! Dieing.")
             self.errordialog.run()
             sys.exit(1)
 
@@ -55,8 +54,8 @@ class MednafenFE:
             "on_soundcheck_toggled"          : self.on_soundcheck_toggled,
             "on_fscheck_toggled"             : self.on_fscheck_toggled,
             "on_glcheck_toggled"             : self.on_glcheck_toggled,
-            "on_vblurcheck_toggled"          : self.on_vblurcheck_toggled,
-            "on_accumulatecheck_toggled"     : self.on_accumulatecheck_toggled,
+            # "on_vblurcheck_toggled"          : self.on_vblurcheck_toggled,
+            # "on_accumulatecheck_toggled"     : self.on_accumulatecheck_toggled,
             "on_romchooser_file_set"         : self.on_romchooser_file_set,
             "on_licensebutton_clicked"       : self.on_licensebutton_clicked,
             "on_helpbutton_clicked"          : self.on_helpbutton_clicked,
@@ -69,12 +68,15 @@ class MednafenFE:
         })
 
         self.window.show()
-        try: signal.signal(signal.SIGINT, self.on_quit)
-        except: pass
-        try: signal.signal(signal.SIGTERM, self.on_quit)
-        except: pass
+        try:
+            signal.signal(signal.SIGINT, self.on_quit)
+        except:
+            pass
+        try:
+            signal.signal(signal.SIGTERM, self.on_quit)
+        except:
+            pass
         gtk.main()
-
 
     # utility
     def create_stock_items(self):
@@ -94,17 +96,17 @@ class MednafenFE:
             ("mfe-stop",    "_Stop",    0, 0, "English")
         )
         stock_files = (
-            ("mfe-general", mfeutil.genimage),
-            ("mfe-engine",  mfeutil.engimage),
-            ("mfe-about",   mfeutil.aboutimage),
-            ("mfe-clear",   mfeutil.clearimage),
-            ("mfe-save",    mfeutil.saveimage),
-            ("mfe-doc",     mfeutil.docimage),
-            ("mfe-license", mfeutil.licimage),
-            ("mfe-help",    mfeutil.helpimage),
-            ("mfe-quit",    mfeutil.quitimage),
-            ("mfe-play",    mfeutil.playimage),
-            ("mfe-stop",    mfeutil.stopimage)
+            ("mfe-general", mfeconst.genimage),
+            ("mfe-engine",  mfeconst.engimage),
+            ("mfe-about",   mfeconst.aboutimage),
+            ("mfe-clear",   mfeconst.clearimage),
+            ("mfe-save",    mfeconst.saveimage),
+            ("mfe-doc",     mfeconst.docimage),
+            ("mfe-license", mfeconst.licimage),
+            ("mfe-help",    mfeconst.helpimage),
+            ("mfe-quit",    mfeconst.quitimage),
+            ("mfe-play",    mfeconst.playimage),
+            ("mfe-stop",    mfeconst.stopimage)
         )
         gtk.stock_add(stock_items)
         factory = gtk.IconFactory()
@@ -113,7 +115,6 @@ class MednafenFE:
             icon_set = gtk.IconSet(pixbuf)
             factory.add(item, icon_set)
         factory.add_default()
-
 
     def get_objects(self, widgets):
         self.window             = widgets.get_object("MainWindow")
@@ -151,7 +152,7 @@ class MednafenFE:
         self.stretchcheck       = widgets.get_object("stretchcheck")
         self.bilinearcheck      = widgets.get_object("bilinearcheck")
         self.scanlinespin       = widgets.get_object("scanlinespin")
-        self.vblurcheck         = widgets.get_object("vblurcheck")
+        # self.vblurcheck         = widgets.get_object("vblurcheck")
         self.accumulatecheck    = widgets.get_object("accumulatecheck")
         self.amountlabel        = widgets.get_object("amountlabel")
         self.amountspin         = widgets.get_object("amountspin")
@@ -179,8 +180,8 @@ class MednafenFE:
         self.helpbutton         = widgets.get_object("helpbutton")
         self.aboutlabel         = widgets.get_object("aboutlabel")
 
-        widgets.get_object("licenseview").get_buffer().set_text(mfeutil.license)
-        widgets.get_object("helpview").get_buffer().set_text(mfeutil.help)
+        widgets.get_object("licenseview").get_buffer().set_text(mfeconst.license)
+        widgets.get_object("helpview").get_buffer().set_text(mfeconst.help)
 
 #        # creating a MessageDialog from glade file throws libglade warnings...do it manually
 #        self.errordialog = gtk.MessageDialog(self.window,
@@ -218,7 +219,7 @@ class MednafenFE:
 
         if have_mozembed:
            self.mozembed = gtkmozembed.MozEmbed()
-           self.mozembed.load_url("file://" + mfeutil.helpfile + "#using-cli")
+           self.mozembed.load_url("file://" + mfeconst.helpfile + "#using-cli")
            self.optsscrolled.add_with_viewport(self.mozembed)
            self.mozembed.show()
            self.mozembed.connect("location", self.location_changed)
@@ -228,7 +229,7 @@ class MednafenFE:
         settings.set_long_property("gtk-button-images", True, "mfe")
 
 
-        text = self.aboutlabel.get_text() % (mfeutil.infoheader,
+        text = self.aboutlabel.get_text() % (mfeconst.infoheader,
                                              mfeutil.get_med_version(self.runner.mednafen))
         self.aboutlabel.set_markup(text)
 
@@ -285,13 +286,13 @@ class MednafenFE:
         self.stretchcheck.set_active(self.config["stretch"])
         self.bilinearcheck.set_active(self.config["interpolate"])
         self.scanlinespin.set_value(self.config["scanlines"])
-        self.vblurcheck.set_active(self.config["vblur"])
-        self.accumulatecheck.set_active(self.config["accumulate"])
+        # self.vblurcheck.set_active(self.config["vblur"])
+        # self.accumulatecheck.set_active(self.config["accumulate"])
         self.amountspin.set_value(self.config["amount"])
         self.filtercombo.set_active(self.config["filter"])
         self.shadercombo.set_active(self.config["shader"])
 
-        self.on_vblurcheck_toggled(self.vblurcheck)
+        # self.on_vblurcheck_toggled(self.vblurcheck)
 
         self.backendcombo.set_active(self.config["backend"])
         if self.config["rom"]:
@@ -337,8 +338,8 @@ class MednafenFE:
         self.config["stretch"]          = self.stretchcheck.get_active()
         self.config["interpolate"]      = self.bilinearcheck.get_active()
         self.config["scanlines"]        = int(self.scanlinespin.get_value())
-        self.config["vblur"]            = self.vblurcheck.get_active()
-        self.config["accumulate"]       = self.accumulatecheck.get_active()
+        # self.config["vblur"]            = self.vblurcheck.get_active()
+        # self.config["accumulate"]       = self.accumulatecheck.get_active()
         self.config["amount"]           = int(self.amountspin.get_value())
 
         self.config["filter"]           = self.filtercombo.get_active()
@@ -355,7 +356,7 @@ class MednafenFE:
     def format_options(self):
         options = []
         rompath = os.path.dirname(self.config["rom"])
-        prefix  = mfeutil.backends[self.config["backend"]]
+        prefix  = mfeconst.backends[self.config["backend"]]
 
         options.append("-path_snap")
         if self.config["snap_path_sar"]:
@@ -399,7 +400,7 @@ class MednafenFE:
             options.append("-glvsync")
             options.append(str(int(self.config["vsync"])))
             options.append("-%s.pixshader" % prefix)
-            options.append(mfeutil.shaders[self.config["shader"]])
+            options.append(mfeconst.shaders[self.config["shader"]])
         else:
             options.append("sdl")
 
@@ -410,12 +411,12 @@ class MednafenFE:
         options.append(str(int(self.config["sound"])))
         if self.config["sound"]:
             options.append("-soundrate")
-            options.append(mfeutil.srates[self.config["srate"]])
+            options.append(mfeconst.srates[self.config["srate"]])
             options.append("-sounddriver")
-            options.append(mfeutil.sdrivers[self.config["sdriver"]])
+            options.append(mfeconst.sdrivers[self.config["sdriver"]])
             options.append("-soundvol")
             options.append(str(self.config["volume"]))
-            if prefix in mfeutil.monoavail:
+            if prefix in mfeconst.monoavail:
                 options.append("-%s.forcemono" % prefix)
                 options.append(str(int(self.config["mono"])))
 
@@ -450,20 +451,20 @@ class MednafenFE:
         options.append("-%s.videoip" % prefix)
         options.append(str(int(self.config["interpolate"])))
 
-        options.append("-%s.vblur" % prefix)
-        options.append(str(int(self.config["vblur"])))
-        if self.config["vblur"]:
-            options.append("-%s.vblur.accum" % prefix)
-            options.append(str(int(self.config["accumulate"])))
-            if self.config["accumulate"]:
-                options.append("-%s.vblur.accum.amount" % prefix)
-                options.append(str(self.config["amount"]))
+        # options.append("-%s.vblur" % prefix)
+        # options.append(str(int(self.config["vblur"])))
+        # if self.config["vblur"]:
+        #     options.append("-%s.vblur.accum" % prefix)
+        #     options.append(str(int(self.config["accumulate"])))
+        #     if self.config["accumulate"]:
+        #         options.append("-%s.vblur.accum.amount" % prefix)
+        #         options.append(str(self.config["amount"]))
 
         options.append("-%s.scanlines" % prefix)
         options.append(str(self.config["scanlines"]))
 
         options.append("-%s.special" % prefix)
-        options.append(mfeutil.filters[self.config["filter"]])
+        options.append(mfeconst.filters[self.config["filter"]])
 
         text = self.manualoptsentry.get_text().strip()
         if text:
@@ -475,14 +476,14 @@ class MednafenFE:
         return options
 
     def set_monocheck_sensitive(self):
-        backend = mfeutil.backends[self.backendcombo.get_active()]
-        enable  = (backend in mfeutil.monoavail) & self.soundcheck.get_active()
+        backend = mfeconst.backends[self.backendcombo.get_active()]
+        enable  = (backend in mfeconst.monoavail) & self.soundcheck.get_active()
         self.monocheck.set_sensitive(enable)
 
     def guess_backend(self):
         ext = os.path.splitext(self.config["rom"])[1]
-        for i in range(len(mfeutil.exts)):
-            if ext.lower() in mfeutil.exts[i]:
+        for i in range(len(mfeconst.exts)):
+            if ext.lower() in mfeconst.exts[i]:
                 self.backendcombo.set_active(i)
 
     def enable_disable_widgets(self, enable):
@@ -555,23 +556,23 @@ class MednafenFE:
         self.xresspin.set_sensitive(enable)
         self.yresspin.set_sensitive(enable)
 
-    def on_vblurcheck_toggled(self, widget, *args):
-        enable = widget.get_active()
-        self.accumulatecheck.set_sensitive(enable)
-        if gtk.pygtk_version >= (2, 12, 0):
-            # gtk.Widget.set_has_tooltip() is supposed to be there since 2.12...
-            # well...it's not on my 2.12.1 box...whatever, do it manually...
-            try: self.accumulatecheck.props.has_tooltip = enable
-            except: pass
-        self.on_accumulatecheck_toggled(self.accumulatecheck)
+    # def on_vblurcheck_toggled(self, widget, *args):
+    #     enable = widget.get_active()
+    #     self.accumulatecheck.set_sensitive(enable)
+    #     if gtk.pygtk_version >= (2, 12, 0):
+    #         # gtk.Widget.set_has_tooltip() is supposed to be there since 2.12...
+    #         # well...it's not on my 2.12.1 box...whatever, do it manually...
+    #         try: self.accumulatecheck.props.has_tooltip = enable
+    #         except: pass
+    #     self.on_accumulatecheck_toggled(self.accumulatecheck)
 
-    def on_accumulatecheck_toggled(self, widget, *args): 
-        enable = (widget.get_active() & self.vblurcheck.get_active())
-        self.amountlabel.set_sensitive(enable)
-        self.amountspin.set_sensitive(enable)
-        if gtk.pygtk_version >= (2, 12, 0):
-            try: self.amountspin.props.has_tooltip = enable
-            except: pass
+    # def on_accumulatecheck_toggled(self, widget, *args):
+    #     enable = (widget.get_active() & self.vblurcheck.get_active())
+    #     self.amountlabel.set_sensitive(enable)
+    #     self.amountspin.set_sensitive(enable)
+    #     if gtk.pygtk_version >= (2, 12, 0):
+    #         try: self.amountspin.props.has_tooltip = enable
+    #         except: pass
 
     def on_romchooser_file_set(self, widget, *args):
         self.config["rom"] = widget.get_filename()
@@ -603,7 +604,7 @@ class MednafenFE:
         if have_mozembed:
             self.optshelpwindow.show()
         else:
-            webbrowser.open(mfeutil.helpurl)
+            webbrowser.open(mfeconst.helpurl)
 
     def on_optshelpclosebutton_clicked(self, widget, *args):
         self.optshelpwindow.hide()
